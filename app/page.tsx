@@ -26,11 +26,6 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
-                  <Link href="/dashboard">
-                    <Button size="lg" variant="outline">
-                      View Demo
-                    </Button>
-                  </Link>
                 </div>
               </div>
               <div className="flex items-center justify-center">
