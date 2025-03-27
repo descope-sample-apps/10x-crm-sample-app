@@ -40,7 +40,10 @@ export function withOAuth(
 
       // Check required scopes
       if (requiredScopes.some(scope => !scopes.includes(scope))) {
-        return NextResponse.json({ error: 'Insufficient permissions' }, { status: 403 })
+        return NextResponse.json({ 
+          error: 'Insufficient permissions',
+          requiredScopes: requiredScopes 
+        }, { status: 403 })
       }
 
       return handler(req, context)
