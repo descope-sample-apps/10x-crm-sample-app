@@ -2,18 +2,26 @@ import { type NextRequest, NextResponse } from "next/server"
 import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware"
 import { customers, dummyDeals as deals } from "@/lib/dummy-data"
 
-// Get a single contact
+// Get a single contact by ID or email
 async function handler(request: NextRequest, context: OAuthContext) {
-  const id = request.url.split("/").pop()!
+  const identifier = request.url.split("/").pop()!
 
   try {
-    const contact = customers.find(c => c.id === id)
+    let contact;
+
+    // Check if the identifier is an email
+    if (identifier.includes("@")) {
+      contact = customers.find(c => c.email.toLowerCase() === identifier.toLowerCase())
+    } else {
+      contact = customers.find(c => c.id === identifier)
+    }
+
     if (!contact) {
       return NextResponse.json({ error: "Contact not found" }, { status: 404 })
     }
 
     // Get associated deals
-    const contactDeals = deals.filter(d => d.customerId === id)
+    const contactDeals = deals.filter(d => d.customerId === contact.id)
     
     return NextResponse.json({ ...contact, deals: contactDeals })
   } catch (error) {

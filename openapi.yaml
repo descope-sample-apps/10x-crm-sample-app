@@ -164,8 +164,8 @@ paths:
 
   /contacts/{id}:
     get:
-      summary: Get contact
-      description: Get a single contact by ID with their associated deals
+      summary: Get contact by ID or email
+      description: Retrieve a single contact by their ID or email, along with their associated deals.
       tags:
         - Contacts
       security:
@@ -176,6 +176,7 @@ paths:
           required: true
           schema:
             type: string
+          description: The ID or email of the contact to retrieve.
       responses:
         '200':
           description: Successful response
@@ -281,8 +282,8 @@ paths:
 
   /deals/{id}:
     get:
-      summary: Get deal
-      description: Get a single deal by ID
+      summary: Get deals by customer ID or email
+      description: Retrieve all deals associated with a specific customer by their ID or email.
       tags:
         - Deals
       security:
@@ -293,13 +294,21 @@ paths:
           required: true
           schema:
             type: string
+          description: The ID or email of the customer to retrieve deals for.
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Deal'
+                type: object
+                properties:
+                  deals:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Deal'
+                  customer:
+                    $ref: '#/components/schemas/Contact'
         '401':
           description: Missing or invalid token
           content:
@@ -313,7 +322,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '404':
-          description: Deal not found
+          description: Customer not found
           content:
             application/json:
               schema:
