@@ -2,13 +2,25 @@ openapi: 3.0.0
 info:
   title: CRM API
   version: 1.0.0
-  description: API for managing CRM contacts and deals with OAuth authentication
+  description: API for managing CRM contacts and deals with OAuth authentication using Descope
 
 servers:
   - url: /api
     description: API base URL
 
 components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: "Use Descope as an OAuth 2.0 provider for authentication."
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.descope.com/oauth2/v1/apps/authorize
+          tokenUrl: https://api.descope.com/oauth2/v1/apps/token
+          scopes:
+            contacts:read: "Read user's contacts"
+            deals:read: "Read user's deals"
+
   schemas:
     Contact:
       type: object
@@ -72,7 +84,7 @@ components:
               type: number
             pages:
               type: number
-              
+
     Error:
       type: object
       properties:
@@ -85,14 +97,8 @@ components:
             type: string
           description: List of required scopes when permission is insufficient
 
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: Descope session token
-
 security:
-  - bearerAuth: []
+  - OAuth2: []
 
 paths:
   /contacts:
@@ -102,7 +108,7 @@ paths:
       tags:
         - Contacts
       security:
-        - bearerAuth: ["contacts:read"]
+        - OAuth2: [contacts:read]
       parameters:
         - name: page
           in: query
@@ -138,7 +144,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '403':
-          description: Insufficient permissions
+          description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
@@ -157,7 +163,7 @@ paths:
       tags:
         - Contacts
       security:
-        - bearerAuth: ["contacts:read"]
+        - OAuth2: [contacts:read]
       parameters:
         - name: id
           in: path
@@ -178,13 +184,13 @@ paths:
                         items:
                           $ref: '#/components/schemas/Deal'
         '401':
-          description: Missing or invalid token
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '403':
-          description: Insufficient permissions
+          description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
@@ -209,7 +215,7 @@ paths:
       tags:
         - Deals
       security:
-        - bearerAuth: ["deals:read"]
+        - OAuth2: [deals:read]
       parameters:
         - name: page
           in: query
@@ -249,7 +255,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '403':
-          description: Insufficient permissions
+          description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
@@ -268,7 +274,7 @@ paths:
       tags:
         - Deals
       security:
-        - bearerAuth: ["deals:read"]
+        - OAuth2: [deals:read]
       parameters:
         - name: id
           in: path
@@ -289,7 +295,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '403':
-          description: Insufficient permissions
+          description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
