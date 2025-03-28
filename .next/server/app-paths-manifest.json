@@ -1,9 +1,0 @@
-{
-  "/dashboard/page": "app/dashboard/page.js",
-  "/login/page": "app/login/page.js",
-  "/dashboard/contacts/page": "app/dashboard/contacts/page.js",
-  "/dashboard/deals/page": "app/dashboard/deals/page.js",
-  "/dashboard/analytics/page": "app/dashboard/analytics/page.js",
-  "/dashboard/calendar/page": "app/dashboard/calendar/page.js",
-  "/dashboard/settings/page": "app/dashboard/settings/page.js"
-}
