@@ -47,9 +47,9 @@ export function DashboardNav() {
   const sdk = useDescope();
   const router = useRouter();
 
-  const handleLogout = useCallback(() => {
-		sdk.logout();
-    router.push("/login");
+  const handleLogout = useCallback(async () => {
+		await sdk.logout();
+    router.push("/");
 	}, [sdk, router]);
 
   return (
