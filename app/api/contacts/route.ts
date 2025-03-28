@@ -58,6 +58,10 @@ async function handler(request: NextRequest, context: OAuthContext) {
     const paginatedContacts = filteredContacts.slice(from, to)
     const totalCount = filteredContacts.length
 
+    if (paginatedContacts.length === 0) {
+      return NextResponse.json({ error: "No contacts found" }, { status: 404 })
+    }
+
     // Return response with pagination metadata
     return NextResponse.json({
       data: paginatedContacts,

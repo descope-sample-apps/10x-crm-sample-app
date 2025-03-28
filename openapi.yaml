@@ -149,6 +149,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+        '404':
+          description: No contacts found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: Server error
           content:
@@ -184,7 +190,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/Deal'
         '401':
-          description: Unauthorized
+          description: Missing or invalid token
           content:
             application/json:
               schema:
@@ -256,6 +262,12 @@ paths:
                 $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden - Missing required scope
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No deals found
           content:
             application/json:
               schema:

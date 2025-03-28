@@ -52,6 +52,10 @@ async function handler(request: NextRequest, context: OAuthContext) {
     const paginatedDeals = filteredDeals.slice(from, to)
     const totalCount = filteredDeals.length
 
+    if (paginatedDeals.length === 0) {
+      return NextResponse.json({ error: "No deals found" }, { status: 404 })
+    }
+
     // Return response with pagination metadata
     return NextResponse.json({
       data: paginatedDeals,
