@@ -1,0 +1,308 @@
+openapi: 3.0.0
+info:
+  title: CRM API
+  version: 1.0.0
+  description: API for managing CRM contacts and deals with OAuth authentication
+
+servers:
+  - url: /api
+    description: API base URL
+
+components:
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        company:
+          type: string
+        tenant_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        last_contact:
+          type: string
+          format: date-time
+
+    Deal:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        value:
+          type: number
+        stage:
+          type: string
+        customerId:
+          type: string
+        expectedCloseDate:
+          type: string
+          format: date
+        probability:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+        contact:
+          $ref: '#/components/schemas/Contact'
+
+    PaginatedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        pagination:
+          type: object
+          properties:
+            total:
+              type: number
+            page:
+              type: number
+            limit:
+              type: number
+            pages:
+              type: number
+              
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        requiredScopes:
+          type: array
+          items:
+            type: string
+          description: List of required scopes when permission is insufficient
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Descope session token
+
+security:
+  - bearerAuth: []
+
+paths:
+  /contacts:
+    get:
+      summary: List contacts
+      description: Get a paginated list of contacts with optional search
+      tags:
+        - Contacts
+      security:
+        - bearerAuth: ["contacts:read"]
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PaginatedResponse'
+                  - properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Contact'
+        '401':
+          description: Missing or invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /contacts/{id}:
+    get:
+      summary: Get contact
+      description: Get a single contact by ID with their associated deals
+      tags:
+        - Contacts
+      security:
+        - bearerAuth: ["contacts:read"]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Contact'
+                  - properties:
+                      deals:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Deal'
+        '401':
+          description: Missing or invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Contact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /deals:
+    get:
+      summary: List deals
+      description: Get a paginated list of deals with optional search and stage filters
+      tags:
+        - Deals
+      security:
+        - bearerAuth: ["deals:read"]
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: stage
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/PaginatedResponse'
+                  - properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Deal'
+        '401':
+          description: Missing or invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /deals/{id}:
+    get:
+      summary: Get deal
+      description: Get a single deal by ID
+      tags:
+        - Deals
+      security:
+        - bearerAuth: ["deals:read"]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deal'
+        '401':
+          description: Missing or invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Deal not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error' 

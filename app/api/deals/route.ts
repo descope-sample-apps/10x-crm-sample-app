@@ -70,39 +70,3 @@ async function handler(request: NextRequest, context: OAuthContext) {
 
 // GET endpoint
 export const GET = withOAuth(handler, ["deals:read"])
-
-// POST endpoint
-export const POST = withOAuth(
-  async (request: NextRequest, context: OAuthContext) => {
-    try {
-      const body = await request.json()
-
-      // Verify the contact exists
-      const contact = customers.find(c => c.id === body.customerId)
-      if (!contact) {
-        return NextResponse.json({ error: "Contact not found" }, { status: 400 })
-      }
-
-      // Create new deal
-      const newDeal: Deal = {
-        id: `d${dummyDeals.length + 1}`,
-        name: body.name,
-        value: body.value,
-        stage: body.stage,
-        customerId: body.customerId,
-        expectedCloseDate: body.expectedCloseDate,
-        probability: body.probability || 50,
-        created_at: new Date().toISOString()
-      }
-
-      // In a real app, we would save this to a database
-      dummyDeals.push(newDeal)
-
-      return NextResponse.json(newDeal, { status: 201 })
-    } catch (error) {
-      console.error("Error creating deal:", error)
-      return NextResponse.json({ error: "Failed to create deal" }, { status: 500 })
-    }
-  },
-  ["deals:write"]
-)
