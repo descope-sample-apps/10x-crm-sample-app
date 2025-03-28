@@ -6,6 +6,7 @@ import { DashboardShell } from "@/components/dashboard-shell"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -15,9 +16,11 @@ import { useDescope, useSession, useUser } from '@descope/nextjs-sdk/client';
 
 export default function SettingsPage() {
   const sdk = useDescope();
-  const handleLogout = useCallback(() => {
-		sdk.logout();
-	}, [sdk]);
+  const router = useRouter();
+  const handleLogout = useCallback(async () => {
+    await sdk.logout();
+    router.push("/");
+  }, [sdk, router]);
   return (
     
     <DashboardShell>
