@@ -12,6 +12,9 @@ export interface OAuthContext {
 // Helper function to validate session and extract scopes
 async function validateSession(token: string): Promise<string[]> {
   try {
+    if (!token) {
+      throw new Error('Missing or invalid Authorization header')
+    }
     const validationResponse = await sdk.validateSession(token)
     const scopeString = (validationResponse.token.scope as string) || ''
     return scopeString.split(' ').filter(Boolean) as string[]
@@ -32,6 +35,9 @@ export function withOAuth(
 
     try {
       const token = authHeader.replace('Bearer ', '')
+      if (!token) {
+        throw new Error('Missing or invalid Authorization header')
+      }
       const scopes = await validateSession(token)
       
       const context: OAuthContext = {

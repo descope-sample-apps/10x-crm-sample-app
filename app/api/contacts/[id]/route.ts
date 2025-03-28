@@ -6,6 +6,11 @@ import { customers, dummyDeals as deals } from "@/lib/dummy-data"
 async function handler(request: NextRequest, context: OAuthContext) {
   const identifier = request.url.split("/").pop()!
 
+  // Check if the identifier is empty
+  if (!identifier) {
+    return NextResponse.json({ error: "Contact ID is not specified" }, { status: 400 })
+  }
+
   try {
     let contact;
 

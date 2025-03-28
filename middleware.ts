@@ -9,7 +9,7 @@ export default authMiddleware({
   redirectUrl: "/login",
 
   // An array of public routes that do not require authentication
-  publicRoutes: ["/", "/login", "/dashboard", "/api/contacts/*", "/api/deals/*"],
+  publicRoutes: ["/", "/login", "/dashboard", "/api/contacts/*", "/api/contacts", "/api/deals", "/api/deals/*"],
 })
 
 export const config = {
