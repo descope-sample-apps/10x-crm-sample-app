@@ -5,8 +5,8 @@ import { DashboardHeader } from "@/components/dashboard-header"
 import { DashboardShell } from "@/components/dashboard-shell"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { dummyDeals as deals, customers, activities } from "@/lib/dummy-data"
-import { Edit, Trash2, User, Calendar, DollarSign, BarChart } from "lucide-react"
+import { deals, customers, activities, tasks, dealOwners } from "@/lib/dummy-data"
+import { User, Calendar, DollarSign, BarChart } from "lucide-react"
 import { formatCurrency, formatDate, capitalizeFirst } from "@/lib/utils"
 
 interface DealPageProps {
@@ -26,25 +26,16 @@ export default async function DealPage({ params }: DealPageProps) {
   }
 
   const customer = customers.find((c) => c.id === deal.customerId)
-  const dealActivities = activities.filter((activity) => activity.customerId === deal.customerId)
+  const dealOwner = dealOwners.find((o) => o.id === deal.ownerId)
+  const dealActivities = activities.filter((activity) => activity.dealId === id)
+  const dealTasks = tasks.filter((task) => task.dealId === id)
 
   return (
     <DashboardShell>
       <DashboardHeader
         heading={deal.name}
         text={`${capitalizeFirst(deal.stage)} - ${formatCurrency(deal.value)}`}
-      >
-        <div className="flex space-x-2">
-          <Button variant="outline">
-            <Edit className="mr-2 h-4 w-4" />
-            Edit
-          </Button>
-          <Button variant="destructive">
-            <Trash2 className="mr-2 h-4 w-4" />
-            Delete
-          </Button>
-        </div>
-      </DashboardHeader>
+      />
 
       <div className="grid gap-4 md:grid-cols-7">
         <Card className="md:col-span-2">
@@ -62,6 +53,12 @@ export default async function DealPage({ params }: DealPageProps) {
                 ) : (
                   "Unknown Customer"
                 )}
+              </span>
+            </div>
+            <div className="flex items-center">
+              <User className="mr-2 h-4 w-4 text-muted-foreground" />
+              <span>
+                Owner: {dealOwner ? dealOwner.name : "Unassigned"}
               </span>
             </div>
             <div className="flex items-center">
@@ -96,18 +93,6 @@ export default async function DealPage({ params }: DealPageProps) {
               <p className="text-sm text-muted-foreground mt-1">{deal.notes}</p>
             </div>
           </CardContent>
-          <CardFooter>
-            <div className="flex space-x-2 w-full">
-              <Button className="w-full" size="sm">
-                <Calendar className="mr-2 h-4 w-4" />
-                Schedule
-              </Button>
-              <Button className="w-full" size="sm">
-                <Edit className="mr-2 h-4 w-4" />
-                Update
-              </Button>
-            </div>
-          </CardFooter>
         </Card>
 
         <div className="md:col-span-5">
@@ -115,17 +100,13 @@ export default async function DealPage({ params }: DealPageProps) {
             <TabsList>
               <TabsTrigger value="activities">Activities</TabsTrigger>
               <TabsTrigger value="tasks">Tasks</TabsTrigger>
-              <TabsTrigger value="files">Files</TabsTrigger>
             </TabsList>
 
             <TabsContent value="activities">
               <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle>Activities</CardTitle>
-                    <CardDescription>Recent activities related to this deal</CardDescription>
-                  </div>
-                  <Button size="sm">Add Activity</Button>
+                <CardHeader>
+                  <CardTitle>Activities</CardTitle>
+                  <CardDescription>Recent activities related to this deal</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {dealActivities.length > 0 ? (
@@ -167,7 +148,6 @@ export default async function DealPage({ params }: DealPageProps) {
                   ) : (
                     <div className="text-center py-4">
                       <p className="text-muted-foreground">No activities found for this deal.</p>
-                      <Button variant="link">Create a new activity</Button>
                     </div>
                   )}
                 </CardContent>
@@ -176,96 +156,49 @@ export default async function DealPage({ params }: DealPageProps) {
 
             <TabsContent value="tasks">
               <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle>Tasks</CardTitle>
-                    <CardDescription>Tasks related to this deal</CardDescription>
-                  </div>
-                  <Button size="sm">Add Task</Button>
+                <CardHeader>
+                  <CardTitle>Tasks</CardTitle>
+                  <CardDescription>Tasks related to this deal</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b pb-4">
-                      <div className="flex items-center">
-                        <input type="checkbox" className="h-4 w-4 rounded border-gray-300 mr-3" />
-                        <div>
-                          <p className="font-medium">Follow up with client about proposal</p>
-                          <p className="text-sm text-muted-foreground">Due: 2023-04-20</p>
+                  {dealTasks.length > 0 ? (
+                    <div className="space-y-4">
+                      {dealTasks.map((task) => (
+                        <div key={task.id} className="flex items-center justify-between border-b pb-4">
+                          <div className="flex items-center">
+                            <input 
+                              type="checkbox" 
+                              className="h-4 w-4 rounded border-gray-300 mr-3" 
+                              defaultChecked={task.status === 'completed'}
+                              disabled
+                            />
+                            <div>
+                              <p className="font-medium">{task.title}</p>
+                              <p className="text-sm text-muted-foreground">Due: {formatDate(task.dueDate)}</p>
+                              <p className="text-sm text-muted-foreground mt-1">{task.description}</p>
+                            </div>
+                          </div>
+                          <div>
+                            <div
+                              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold mr-2 ${
+                                task.priority === "high"
+                                  ? "bg-red-100 text-red-800"
+                                  : task.priority === "medium"
+                                    ? "bg-orange-100 text-orange-800"
+                                    : "bg-blue-100 text-blue-800"
+                              }`}
+                            >
+                              {capitalizeFirst(task.priority)}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Edit
-                      </Button>
+                      ))}
                     </div>
-                    <div className="flex items-center justify-between border-b pb-4">
-                      <div className="flex items-center">
-                        <input type="checkbox" className="h-4 w-4 rounded border-gray-300 mr-3" />
-                        <div>
-                          <p className="font-medium">Prepare contract draft</p>
-                          <p className="text-sm text-muted-foreground">Due: 2023-04-25</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Edit
-                      </Button>
+                  ) : (
+                    <div className="text-center py-4">
+                      <p className="text-muted-foreground">No tasks found for this deal.</p>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <input type="checkbox" className="h-4 w-4 rounded border-gray-300 mr-3" />
-                        <div>
-                          <p className="font-medium">Schedule final negotiation call</p>
-                          <p className="text-sm text-muted-foreground">Due: 2023-05-01</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Edit
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="files">
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle>Files</CardTitle>
-                    <CardDescription>Documents related to this deal</CardDescription>
-                  </div>
-                  <Button size="sm">Upload File</Button>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b pb-4">
-                      <div className="flex items-center">
-                        <div className="h-8 w-8 rounded-md bg-blue-100 flex items-center justify-center mr-3">
-                          <span className="text-blue-700 text-xs font-bold">PDF</span>
-                        </div>
-                        <div>
-                          <p className="font-medium">Proposal_v1.pdf</p>
-                          <p className="text-sm text-muted-foreground">Uploaded on 2023-03-15</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Download
-                      </Button>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="h-8 w-8 rounded-md bg-green-100 flex items-center justify-center mr-3">
-                          <span className="text-green-700 text-xs font-bold">XLS</span>
-                        </div>
-                        <div>
-                          <p className="font-medium">Pricing_Sheet.xlsx</p>
-                          <p className="text-sm text-muted-foreground">Uploaded on 2023-03-10</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Download
-                      </Button>
-                    </div>
-                  </div>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>

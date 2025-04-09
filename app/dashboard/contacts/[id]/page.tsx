@@ -5,8 +5,8 @@ import { DashboardHeader } from "@/components/dashboard-header"
 import { DashboardShell } from "@/components/dashboard-shell"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { customers, dummyDeals as deals, activities, type Deal, type Activity } from "@/lib/dummy-data"
-import { Edit, Trash2, Mail, Phone, MapPin, FileText } from "lucide-react"
+import { customers, deals, activities, type Deal, type Activity } from "@/lib/dummy-data"
+import { Mail, Phone, MapPin } from "lucide-react"
 import { formatCurrency, formatDate, capitalizeFirst } from "@/lib/utils"
 
 interface ContactPageProps {
@@ -30,16 +30,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
   return (
     <DashboardShell>
       <DashboardHeader heading={customer.name} text={customer.company}>
-        <div className="flex space-x-2">
-          <Button variant="outline">
-            <Edit className="mr-2 h-4 w-4" />
-            Edit
-          </Button>
-          <Button variant="destructive">
-            <Trash2 className="mr-2 h-4 w-4" />
-            Delete
-          </Button>
-        </div>
       </DashboardHeader>
 
       <div className="grid gap-4 md:grid-cols-7">
@@ -97,19 +87,13 @@ export default async function ContactPage({ params }: ContactPageProps) {
             <TabsList>
               <TabsTrigger value="deals">Deals</TabsTrigger>
               <TabsTrigger value="activities">Activities</TabsTrigger>
-              <TabsTrigger value="files">Files</TabsTrigger>
             </TabsList>
 
             <TabsContent value="deals">
               <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle>Deals</CardTitle>
-                    <CardDescription>Deals associated with {customer.name}</CardDescription>
-                  </div>
-                  <Link href="/dashboard/deals/new">
-                    <Button size="sm">Add Deal</Button>
-                  </Link>
+                <CardHeader>
+                  <CardTitle>Deals</CardTitle>
+                  <CardDescription>Deals associated with {customer.name}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {customerDeals.length > 0 ? (
@@ -149,9 +133,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   ) : (
                     <div className="text-center py-4">
                       <p className="text-muted-foreground">No deals found for this contact.</p>
-                      <Link href="/dashboard/deals/new">
-                        <Button variant="link">Create a new deal</Button>
-                      </Link>
                     </div>
                   )}
                 </CardContent>
@@ -160,12 +141,9 @@ export default async function ContactPage({ params }: ContactPageProps) {
 
             <TabsContent value="activities">
               <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle>Activities</CardTitle>
-                    <CardDescription>Recent activities with {customer.name}</CardDescription>
-                  </div>
-                  <Button size="sm">Add Activity</Button>
+                <CardHeader>
+                  <CardTitle>Activities</CardTitle>
+                  <CardDescription>Recent activities with {customer.name}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {customerActivities.length > 0 ? (
@@ -207,61 +185,8 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   ) : (
                     <div className="text-center py-4">
                       <p className="text-muted-foreground">No activities found for this contact.</p>
-                      <Button variant="link">Create a new activity</Button>
                     </div>
                   )}
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="files">
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <div>
-                    <CardTitle>Files</CardTitle>
-                    <CardDescription>Documents and files related to {customer.name}</CardDescription>
-                  </div>
-                  <Button size="sm">Upload File</Button>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b pb-4">
-                      <div className="flex items-center">
-                        <FileText className="h-8 w-8 text-blue-500 mr-3" />
-                        <div>
-                          <p className="font-medium">Contract_2023.pdf</p>
-                          <p className="text-sm text-muted-foreground">Uploaded on 2023-03-15</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Download
-                      </Button>
-                    </div>
-                    <div className="flex items-center justify-between border-b pb-4">
-                      <div className="flex items-center">
-                        <FileText className="h-8 w-8 text-green-500 mr-3" />
-                        <div>
-                          <p className="font-medium">Proposal_Q2.xlsx</p>
-                          <p className="text-sm text-muted-foreground">Uploaded on 2023-02-28</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Download
-                      </Button>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <FileText className="h-8 w-8 text-purple-500 mr-3" />
-                        <div>
-                          <p className="font-medium">Meeting_Notes.docx</p>
-                          <p className="text-sm text-muted-foreground">Uploaded on 2023-01-15</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        Download
-                      </Button>
-                    </div>
-                  </div>
                 </CardContent>
               </Card>
             </TabsContent>

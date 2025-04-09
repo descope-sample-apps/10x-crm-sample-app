@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware"
-import { customers, type Customer } from "@/lib/dummy-data"
+import { customers, deals, activities } from "@/lib/dummy-data"
 
 // Define the Contact interface based on our needs
 interface Contact {
@@ -8,24 +8,22 @@ interface Contact {
   name: string
   email: string
   company: string
-  tenant_id: string
   created_at: string
   last_contact: string
+  status: string
 }
-
 // Transform customers into contacts format
 const contacts: Contact[] = customers.map(customer => ({
   id: customer.id,
   name: customer.name,
   email: customer.email,
   company: customer.company,
-  tenant_id: "tenant1", // Assuming default tenant for demo
-  created_at: new Date().toISOString(), // Using current date since original data doesn't have this
-  last_contact: customer.lastContact
+  created_at: customer.created_at,
+  last_contact: customer.lastContact,
+  status: customer.status,
 }))
 
 async function handler(request: NextRequest, context: OAuthContext) {
-
   try {
     // Get query parameters
     const url = new URL(request.url)
@@ -37,12 +35,12 @@ async function handler(request: NextRequest, context: OAuthContext) {
     const from = (page - 1) * limit
     const to = from + limit
 
-    // Filter contacts by tenant and search terms
-    let filteredContacts = customers
+    // Filter customers by search terms
+    let filteredCustomers = customers
 
     if (search) {
       const searchLower = search.toLowerCase()
-      filteredContacts = filteredContacts.filter(customer =>
+      filteredCustomers = filteredCustomers.filter(customer =>
         customer.name.toLowerCase().includes(searchLower) ||
         customer.email.toLowerCase().includes(searchLower) ||
         customer.company.toLowerCase().includes(searchLower)
@@ -50,21 +48,51 @@ async function handler(request: NextRequest, context: OAuthContext) {
     }
 
     // Sort by created_at in descending order
-    filteredContacts.sort((a, b) => 
+    filteredCustomers.sort((a, b) => 
       new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
     )
 
-    // Apply pagination
-    const paginatedContacts = filteredContacts.slice(from, to)
-    const totalCount = filteredContacts.length
+    // Check if user has both required scopes
+    const hasDealsRead = context.scopes.includes("deals:read")
 
-    if (paginatedContacts.length === 0) {
+    // Apply pagination and prepare response data
+    const paginatedCustomers = filteredCustomers
+      .slice(from, to)
+      .map(customer => {
+        const { avatar, ...customerWithoutAvatar } = customer
+        
+        if (hasDealsRead) {
+          // Get associated deals with their activities
+          const customerDeals = deals
+            .filter(d => d.customerId === customer.id)
+            .map(deal => {
+              const dealActivities = activities
+                .filter(a => a.dealId === deal.id)
+                .map(({ customerId, ...rest }) => rest) // Remove customerId from activities
+              return {
+                ...deal,
+                activities: dealActivities
+              }
+            })
+          
+          return {
+            ...customerWithoutAvatar,
+            deals: customerDeals
+          }
+        }
+        
+        return customerWithoutAvatar
+      })
+
+    const totalCount = filteredCustomers.length
+
+    if (paginatedCustomers.length === 0) {
       return NextResponse.json({ error: "No contacts found" }, { status: 404 })
     }
 
     // Return response with pagination metadata
     return NextResponse.json({
-      data: paginatedContacts,
+      data: paginatedCustomers,
       pagination: {
         total: totalCount,
         page,

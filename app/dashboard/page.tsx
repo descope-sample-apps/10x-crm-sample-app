@@ -4,7 +4,6 @@ import { DashboardHeader } from "@/components/dashboard-header"
 import { DashboardShell } from "@/components/dashboard-shell"
 import { RecentSales } from "@/components/recent-sales"
 import { Overview } from "@/components/overview"
-import { DealsFunnel } from "@/components/deals-funnel"
 
 export default function DashboardPage() {
   return (
@@ -99,76 +98,25 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       </div>
-      <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="deals">Deals</TabsTrigger>
-          <TabsTrigger value="activities">Activities</TabsTrigger>
-        </TabsList>
-        <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
-              <CardHeader>
-                <CardTitle>Overview</CardTitle>
-              </CardHeader>
-              <CardContent className="pl-2">
-                <Overview />
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Recent Sales</CardTitle>
-                <CardDescription>You made 16 sales this month.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <RecentSales />
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-        <TabsContent value="deals" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Deals Pipeline</CardTitle>
-              <CardDescription>Current status of your sales pipeline.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DealsFunnel />
-            </CardContent>
-          </Card>
-        </TabsContent>
-        <TabsContent value="activities" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Recent Activities</CardTitle>
-              <CardDescription>Latest activities across your CRM.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="flex items-center">
-                    <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
-                    <div className="flex-1 space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        {
-                          [
-                            "Call with client",
-                            "Email follow-up",
-                            "Deal updated",
-                            "New contact added",
-                            "Meeting scheduled",
-                          ][i - 1]
-                        }
-                      </p>
-                      <p className="text-sm text-muted-foreground">{`${i} hour${i === 1 ? "" : "s"} ago`}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+      <div className="grid gap-4 mt-4 md:grid-cols-2 lg:grid-cols-7">
+        <Card className="col-span-4">
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+          </CardHeader>
+          <CardContent className="pl-2">
+            <Overview />
+          </CardContent>
+        </Card>
+        <Card className="col-span-3">
+          <CardHeader>
+            <CardTitle>Recent Sales</CardTitle>
+            <CardDescription>You made 16 sales this month.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <RecentSales />
+          </CardContent>
+        </Card>
+      </div>
     </DashboardShell>
   )
 }
