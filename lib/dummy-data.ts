@@ -10,250 +10,285 @@ export interface Customer {
   company: string
   status: string
   lastContact: string
-  value: number
   phone: string
   address: string
   notes: string
-  tenant_id: string
   created_at: string
   avatar: string
 }
 
 export const customers: Customer[] = [
-    {
-      id: "c1",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      company: "Acme Inc",
-      status: "active",
-      lastContact: "2023-03-15",
-      value: 25000,
-      phone: "+1 (555) 123-4567",
-      address: "123 Main St, San Francisco, CA 94105",
-      notes: "Key decision maker, prefers email communication",
-      tenant_id: "tenant1",
-      created_at: "2023-03-15T10:00:00Z",
-      avatar: getAvatarUrl("John Doe")
-    },
-    {
-      id: "c2",
-      name: "Jane Lane",
-      email: "jane.lane@example.com",
-      company: "Globex Corp",
-      status: "active",
-      lastContact: "2023-03-10",
-      value: 42000,
-      phone: "+1 (555) 234-5678",
-      address: "456 Market St, San Francisco, CA 94105",
-      notes: "Interested in premium plan, follow up next quarter",
-      tenant_id: "tenant1",
-      created_at: "2023-03-10T09:00:00Z",
-      avatar: getAvatarUrl("Jane Lane")
-    },
-    {
-      id: "c3",
-      name: "Robert Kim",
-      email: "robert.kim@example.com",
-      company: "Initech",
-      status: "inactive",
-      lastContact: "2023-02-28",
-      value: 18000,
-      phone: "+1 (555) 345-6789",
-      address: "789 Mission St, San Francisco, CA 94105",
-      notes: "Budget constraints, revisit in Q3",
-      tenant_id: "tenant1",
-      created_at: "2023-02-28T10:00:00Z",
-      avatar: getAvatarUrl("Robert Kim")
-    },
-    {
-      id: "c4",
-      name: "Sarah Taylor",
-      email: "sarah.taylor@example.com",
-      company: "Massive Dynamic",
-      status: "active",
-      lastContact: "2023-03-12",
-      value: 65000,
-      phone: "+1 (555) 456-7890",
-      address: "101 California St, San Francisco, CA 94111",
-      notes: "Expanding team, potential for upsell",
-      tenant_id: "tenant1",
-      created_at: "2023-03-12T09:00:00Z",
-      avatar: getAvatarUrl("Sarah Taylor")
-    },
-    {
-      id: "c5",
-      name: "Michael Chen",
-      email: "michael.chen@example.com",
-      company: "Stark Industries",
-      status: "active",
-      lastContact: "2023-03-08",
-      value: 120000,
-      phone: "+1 (555) 567-8901",
-      address: "1 Embarcadero Center, San Francisco, CA 94111",
-      notes: "Enterprise client, quarterly review scheduled",
-      tenant_id: "tenant1",
-      created_at: "2023-03-08T09:00:00Z",
-      avatar: getAvatarUrl("Michael Chen")
-    },
-    {
-      id: "c6",
-      name: "Emily Johnson",
-      email: "emily.johnson@example.com",
-      company: "Wayne Enterprises",
-      status: "inactive",
-      lastContact: "2023-02-15",
-      value: 35000,
-      phone: "+1 (555) 678-9012",
-      address: "555 Montgomery St, San Francisco, CA 94111",
-      notes: "On hold due to restructuring",
-      tenant_id: "tenant1",
-      created_at: "2023-02-15T09:00:00Z",
-      avatar: getAvatarUrl("Emily Johnson")
-    },
-    {
-      id: "c7",
-      name: "David Wilson",
-      email: "david.wilson@example.com",
-      company: "Umbrella Corp",
-      status: "churned",
-      lastContact: "2023-01-20",
-      value: 0,
-      phone: "+1 (555) 789-0123",
-      address: "201 Spear St, San Francisco, CA 94105",
-      notes: "Switched to competitor, exit interview scheduled",
-      tenant_id: "tenant1",
-      created_at: "2023-01-20T09:00:00Z",
-      avatar: getAvatarUrl("David Wilson")
-    },
-    {
-      id: "c8",
-      name: "Lisa Brown",
-      email: "lisa.brown@example.com",
-      company: "Cyberdyne Systems",
-      status: "active",
-      lastContact: "2023-03-14",
-      value: 85000,
-      phone: "+1 (555) 890-1234",
-      address: "50 Fremont St, San Francisco, CA 94105",
-      notes: "Interested in AI features, demo scheduled",
-      tenant_id: "tenant1",
-      created_at: "2023-03-14T09:00:00Z",
-      avatar: getAvatarUrl("Lisa Brown")
-    },
-  ]
-  
-  // Deals data
-  export interface Deal {
-    id: string
-    name: string
-    value: number
-    stage: string
-    customerId: string
-    expectedCloseDate: string
-    probability: number
-    created_at: string
-    notes?: string
+  {
+    id: "c1",
+    name: "John Doe",
+    email: "john.doe@acme.com",
+    company: "Acme Inc",
+    status: "active",
+    lastContact: "2024-01-25",
+    phone: "+1 (555) 123-4567",
+    address: "123 Main St, San Francisco, CA 94105",
+    notes: "CTO, technical decision maker, prefers email communication",
+    created_at: "2023-12-15T10:00:00Z",
+    avatar: getAvatarUrl("John Doe")
+  },
+  {
+    id: "c2",
+    name: "Jane Lane",
+    email: "jane.lane@globex.com",
+    company: "Globex Corp",
+    status: "active",
+    lastContact: "2024-01-22",
+    phone: "+1 (555) 234-5678",
+    address: "456 Market St, San Francisco, CA 94105",
+    notes: "VP of Engineering, focused on security and compliance",
+    created_at: "2023-12-10T09:00:00Z",
+    avatar: getAvatarUrl("Jane Lane")
+  },
+  {
+    id: "c3",
+    name: "Michael Chen",
+    email: "michael.chen@techcorp.com",
+    company: "TechCorp Solutions",
+    status: "active",
+    lastContact: "2024-01-20",
+    phone: "+1 (555) 345-6789",
+    address: "789 Mission St, San Francisco, CA 94105",
+    notes: "Director of IT, evaluating cloud solutions",
+    created_at: "2023-12-05T11:00:00Z",
+    avatar: getAvatarUrl("Michael Chen")
   }
-  
-  export const dummyDeals: Deal[] = [
-    {
-      id: "1",
-      name: "Big Sale",
-      value: 10000,
-      stage: "proposal",
-      customerId: "c1",
-      expectedCloseDate: "2024-03-15",
-      probability: 75,
-      created_at: "2024-01-01T00:00:00Z",
-      notes: "Key opportunity with potential for expansion"
-    },
-    {
-      id: "2",
-      name: "Medium Deal",
-      value: 5000,
-      stage: "negotiation",
-      customerId: "c2",
-      expectedCloseDate: "2024-04-01",
-      probability: 50,
-      created_at: "2024-01-02T00:00:00Z"
-    }
-  ]
-  
-  // Activities data
-  export interface Activity {
-    id: string
-    type: string
-    customer: string
-    customerId: string
-    date: string
-    notes: string
-    completed: boolean
+]
+
+// Deal Owners data
+export interface DealOwner {
+  id: string
+  name: string
+  email: string
+  position: string
+  avatar: string
+  created_at: string
+}
+
+export const dealOwners: DealOwner[] = [
+  {
+    id: "o1",
+    name: "Alex Johnson",
+    email: "alex.johnson@company.com",
+    position: "Senior Account Executive",
+    avatar: getAvatarUrl("Alex Johnson"),
+    created_at: "2023-01-01T10:00:00Z"
+  },
+  {
+    id: "o2",
+    name: "Sam Wilson",
+    email: "sam.wilson@company.com",
+    position: "Account Manager",
+    avatar: getAvatarUrl("Sam Wilson"),
+    created_at: "2023-01-05T09:00:00Z"
   }
-  
-  export const activities: Activity[] = [
-    {
-      id: "a1",
-      type: "call",
-      customer: "John Doe",
-      customerId: "c1",
-      date: "2023-03-15",
-      notes: "Discussed renewal options, client interested in multi-year contract",
-      completed: true,
-    },
-    {
-      id: "a2",
-      type: "email",
-      customer: "Jane Lane",
-      customerId: "c2",
-      date: "2023-03-10",
-      notes: "Sent proposal for premium plan upgrade",
-      completed: true,
-    },
-    {
-      id: "a3",
-      type: "meeting",
-      customer: "Michael Chen",
-      customerId: "c5",
-      date: "2023-03-08",
-      notes: "Quarterly review, client satisfied with current implementation",
-      completed: true,
-    },
-    {
-      id: "a4",
-      type: "task",
-      customer: "Sarah Taylor",
-      customerId: "c4",
-      date: "2023-03-20",
-      notes: "Prepare implementation plan for team expansion",
-      completed: false,
-    },
-    {
-      id: "a5",
-      type: "call",
-      customer: "Lisa Brown",
-      customerId: "c8",
-      date: "2023-03-25",
-      notes: "Schedule demo for AI features",
-      completed: false,
-    },
-    {
-      id: "a6",
-      type: "email",
-      customer: "Robert Kim",
-      customerId: "c3",
-      date: "2023-04-05",
-      notes: "Follow up on basic package proposal",
-      completed: false,
-    },
-    {
-      id: "a7",
-      type: "meeting",
-      customer: "Michael Chen",
-      customerId: "c5",
-      date: "2023-04-10",
-      notes: "Technical evaluation of enterprise solution",
-      completed: false,
-    },
-  ]
+]
+
+// Deals data
+export interface Deal {
+  id: string
+  name: string
+  value: number
+  stage: string
+  customerId: string
+  ownerId: string
+  expectedCloseDate: string
+  probability: number
+  created_at: string
+  notes?: string
+}
+
+export const deals: Deal[] = [
+  {
+    id: "1",
+    name: "Enterprise Software License",
+    value: 150000,
+    stage: "proposal",
+    customerId: "c1",
+    ownerId: "o1",
+    expectedCloseDate: "2024-03-15",
+    probability: 75,
+    created_at: "2024-01-01T00:00:00Z",
+    notes: "Enterprise license for 500 users, includes premium support"
+  },
+  {
+    id: "2",
+    name: "Cloud Migration Project",
+    value: 250000,
+    stage: "negotiation",
+    customerId: "c2",
+    ownerId: "o2",
+    expectedCloseDate: "2024-04-01",
+    probability: 60,
+    created_at: "2024-01-02T00:00:00Z",
+    notes: "Full cloud migration with security compliance requirements"
+  },
+  {
+    id: "3",
+    name: "IT Infrastructure Upgrade",
+    value: 80000,
+    stage: "discovery",
+    customerId: "c3",
+    ownerId: "o1",
+    expectedCloseDate: "2024-05-01",
+    probability: 40,
+    created_at: "2024-01-10T00:00:00Z",
+    notes: "Hardware refresh and software upgrade project"
+  }
+]
+
+// Activities data
+export interface Activity {
+  id: string
+  type: string
+  customer: string
+  customerId: string
+  dealId: string
+  date: string
+  notes: string
+  completed: boolean
+}
+
+export const activities: Activity[] = [
+  // Deal 1 Activities
+  {
+    id: "a1",
+    type: "call",
+    customer: "John Doe",
+    customerId: "c1",
+    dealId: "1",
+    date: "2024-01-15",
+    notes: "Initial discovery call - discussed requirements and timeline",
+    completed: true
+  },
+  {
+    id: "a2",
+    type: "meeting",
+    customer: "John Doe",
+    customerId: "c1",
+    dealId: "1",
+    date: "2024-01-20",
+    notes: "Product demo with technical team",
+    completed: true
+  },
+  {
+    id: "a3",
+    type: "email",
+    customer: "John Doe",
+    customerId: "c1",
+    dealId: "1",
+    date: "2024-01-25",
+    notes: "Sent proposal and pricing details",
+    completed: true
+  },
+  // Deal 2 Activities
+  {
+    id: "a4",
+    type: "call",
+    customer: "Jane Lane",
+    customerId: "c2",
+    dealId: "2",
+    date: "2024-01-10",
+    notes: "Initial consultation - discussed cloud migration needs",
+    completed: true
+  },
+  {
+    id: "a5",
+    type: "meeting",
+    customer: "Jane Lane",
+    customerId: "c2",
+    dealId: "2",
+    date: "2024-01-18",
+    notes: "Security compliance review meeting",
+    completed: true
+  },
+  {
+    id: "a6",
+    type: "task",
+    customer: "Jane Lane",
+    customerId: "c2",
+    dealId: "2",
+    date: "2024-01-22",
+    notes: "Prepare custom security documentation",
+    completed: false
+  },
+  // Deal 3 Activities
+  {
+    id: "a7",
+    type: "call",
+    customer: "Michael Chen",
+    customerId: "c3",
+    dealId: "3",
+    date: "2024-01-12",
+    notes: "Initial discussion about infrastructure needs",
+    completed: true
+  },
+  {
+    id: "a8",
+    type: "meeting",
+    customer: "Michael Chen",
+    customerId: "c3",
+    dealId: "3",
+    date: "2024-01-19",
+    notes: "Site visit to assess current infrastructure",
+    completed: true
+  }
+]
+
+// Tasks data
+export interface Task {
+  id: string
+  title: string
+  description: string
+  dealId: string
+  dealOwnerId: string
+  dueDate: string
+  priority: 'low' | 'medium' | 'high'
+  status: 'todo' | 'in-progress' | 'completed'
+  assignee?: string
+  created_at: string
+}
+
+export const tasks: Task[] = [
+  {
+    id: "t1",
+    title: "Prepare Enterprise License Contract",
+    description: "Draft and review contract documents for the Enterprise Software License deal",
+    dealId: "1",
+    dealOwnerId: "o1",
+    dueDate: "2024-03-10",
+    priority: "high",
+    status: "in-progress",
+    assignee: "Legal Team",
+    created_at: "2024-01-20T09:00:00Z"
+  },
+  {
+    id: "t2",
+    title: "Security compliance documentation",
+    description: "Prepare security compliance documentation for Cloud Migration Project",
+    dealId: "2",
+    dealOwnerId: "o2",
+    dueDate: "2024-03-25",
+    priority: "high",
+    status: "todo",
+    created_at: "2024-01-25T10:00:00Z"
+  },
+  {
+    id: "t3",
+    title: "Infrastructure Assessment Report",
+    description: "Complete infrastructure assessment report for TechCorp Solutions",
+    dealId: "3",
+    dealOwnerId: "o1",
+    dueDate: "2024-02-15",
+    priority: "medium",
+    status: "in-progress",
+    assignee: "Technical Team",
+    created_at: "2024-01-19T11:00:00Z"
+  }
+]
   
   

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware"
-import { dummyDeals, customers, type Deal } from "@/lib/dummy-data"
+import { deals, customers, dealOwners, activities } from "@/lib/dummy-data"
 
 async function handler(request: NextRequest, context: OAuthContext) {
 
@@ -16,17 +16,29 @@ async function handler(request: NextRequest, context: OAuthContext) {
     const from = (page - 1) * limit
     const to = from + limit
 
-    // Filter and enrich deals with customer data
-    let filteredDeals = dummyDeals.map(deal => {
+    // Filter and enrich deals with customer, owner, and activities data
+    let filteredDeals = deals.map(deal => {
       const customer = customers.find(c => c.id === deal.customerId)
+      const owner = dealOwners.find(o => o.id === deal.ownerId)
+      const dealActivities = activities
+        .filter(a => a.dealId === deal.id)
+        .map(({ customerId, ...rest }) => rest) // Remove customerId from activities
+      
       return {
         ...deal,
-        contact: customer ? {
+        customer: customer ? {
           id: customer.id,
           name: customer.name,
           email: customer.email,
           company: customer.company
-        } : null
+        } : null,
+        owner: owner ? {
+          id: owner.id,
+          name: owner.name,
+          email: owner.email,
+          position: owner.position
+        } : null,
+        activities: dealActivities
       }
     })
 
@@ -34,7 +46,8 @@ async function handler(request: NextRequest, context: OAuthContext) {
     if (search) {
       const searchLower = search.toLowerCase()
       filteredDeals = filteredDeals.filter(deal =>
-        deal.name.toLowerCase().includes(searchLower)
+        deal.name.toLowerCase().includes(searchLower) ||
+        (deal.customer && deal.customer.name.toLowerCase().includes(searchLower))
       )
     }
 
@@ -52,8 +65,16 @@ async function handler(request: NextRequest, context: OAuthContext) {
     const paginatedDeals = filteredDeals.slice(from, to)
     const totalCount = filteredDeals.length
 
-    if (paginatedDeals.length === 0) {
-      return NextResponse.json({ error: "No deals found" }, { status: 404 })
+    if (paginatedDeals.length === 0 && page === 1) {
+      return NextResponse.json({
+        data: [],
+        pagination: {
+          total: 0,
+          page,
+          limit,
+          pages: 0,
+        },
+      })
     }
 
     // Return response with pagination metadata

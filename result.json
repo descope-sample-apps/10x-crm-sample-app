@@ -1,0 +1,166 @@
+{
+  "data": [
+    {
+      "id": "c1",
+      "name": "John Doe",
+      "email": "john.doe@acme.com",
+      "company": "Acme Inc",
+      "status": "active",
+      "lastContact": "2024-01-25",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Main St, San Francisco, CA 94105",
+      "notes": "CTO, technical decision maker, prefers email communication",
+      "created_at": "2023-12-15T10:00:00Z",
+      "deals": [
+        {
+          "id": "1",
+          "name": "Enterprise Software License",
+          "value": 150000,
+          "stage": "proposal",
+          "customerId": "c1",
+          "ownerId": "o1",
+          "expectedCloseDate": "2024-03-15",
+          "probability": 75,
+          "created_at": "2024-01-01T00:00:00Z",
+          "notes": "Enterprise license for 500 users, includes premium support",
+          "activities": [
+            {
+              "id": "a1",
+              "type": "call",
+              "customer": "John Doe",
+              "dealId": "1",
+              "date": "2024-01-15",
+              "notes": "Initial discovery call - discussed requirements and timeline",
+              "completed": true
+            },
+            {
+              "id": "a2",
+              "type": "meeting",
+              "customer": "John Doe",
+              "dealId": "1",
+              "date": "2024-01-20",
+              "notes": "Product demo with technical team",
+              "completed": true
+            },
+            {
+              "id": "a3",
+              "type": "email",
+              "customer": "John Doe",
+              "dealId": "1",
+              "date": "2024-01-25",
+              "notes": "Sent proposal and pricing details",
+              "completed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "name": "Jane Lane",
+      "email": "jane.lane@globex.com",
+      "company": "Globex Corp",
+      "status": "active",
+      "lastContact": "2024-01-22",
+      "phone": "+1 (555) 234-5678",
+      "address": "456 Market St, San Francisco, CA 94105",
+      "notes": "VP of Engineering, focused on security and compliance",
+      "created_at": "2023-12-10T09:00:00Z",
+      "deals": [
+        {
+          "id": "2",
+          "name": "Cloud Migration Project",
+          "value": 250000,
+          "stage": "negotiation",
+          "customerId": "c2",
+          "ownerId": "o2",
+          "expectedCloseDate": "2024-04-01",
+          "probability": 60,
+          "created_at": "2024-01-02T00:00:00Z",
+          "notes": "Full cloud migration with security compliance requirements",
+          "activities": [
+            {
+              "id": "a4",
+              "type": "call",
+              "customer": "Jane Lane",
+              "dealId": "2",
+              "date": "2024-01-10",
+              "notes": "Initial consultation - discussed cloud migration needs",
+              "completed": true
+            },
+            {
+              "id": "a5",
+              "type": "meeting",
+              "customer": "Jane Lane",
+              "dealId": "2",
+              "date": "2024-01-18",
+              "notes": "Security compliance review meeting",
+              "completed": true
+            },
+            {
+              "id": "a6",
+              "type": "task",
+              "customer": "Jane Lane",
+              "dealId": "2",
+              "date": "2024-01-22",
+              "notes": "Prepare custom security documentation",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Michael Chen",
+      "email": "michael.chen@techcorp.com",
+      "company": "TechCorp Solutions",
+      "status": "active",
+      "lastContact": "2024-01-20",
+      "phone": "+1 (555) 345-6789",
+      "address": "789 Mission St, San Francisco, CA 94105",
+      "notes": "Director of IT, evaluating cloud solutions",
+      "created_at": "2023-12-05T11:00:00Z",
+      "deals": [
+        {
+          "id": "3",
+          "name": "IT Infrastructure Upgrade",
+          "value": 80000,
+          "stage": "discovery",
+          "customerId": "c3",
+          "ownerId": "o1",
+          "expectedCloseDate": "2024-05-01",
+          "probability": 40,
+          "created_at": "2024-01-10T00:00:00Z",
+          "notes": "Hardware refresh and software upgrade project",
+          "activities": [
+            {
+              "id": "a7",
+              "type": "call",
+              "customer": "Michael Chen",
+              "dealId": "3",
+              "date": "2024-01-12",
+              "notes": "Initial discussion about infrastructure needs",
+              "completed": true
+            },
+            {
+              "id": "a8",
+              "type": "meeting",
+              "customer": "Michael Chen",
+              "dealId": "3",
+              "date": "2024-01-19",
+              "notes": "Site visit to assess current infrastructure",
+              "completed": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "total": 3,
+    "page": 1,
+    "limit": 10,
+    "pages": 1
+  }
+}

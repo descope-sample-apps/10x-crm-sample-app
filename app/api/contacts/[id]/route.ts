@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware"
-import { customers, dummyDeals as deals } from "@/lib/dummy-data"
+import { customers, deals, activities } from "@/lib/dummy-data"
 
 // Get a single contact by ID or email
 async function handler(request: NextRequest, context: OAuthContext) {
@@ -12,23 +12,46 @@ async function handler(request: NextRequest, context: OAuthContext) {
   }
 
   try {
-    let contact;
+    let customer;
 
     // Check if the identifier is an email
     if (identifier.includes("@")) {
-      contact = customers.find(c => c.email.toLowerCase() === identifier.toLowerCase())
+      customer = customers.find(c => c.email.toLowerCase() === identifier.toLowerCase())
     } else {
-      contact = customers.find(c => c.id === identifier)
+      customer = customers.find(c => c.id === identifier)
     }
 
-    if (!contact) {
+    if (!customer) {
       return NextResponse.json({ error: "Contact not found" }, { status: 404 })
     }
 
-    // Get associated deals
-    const contactDeals = deals.filter(d => d.customerId === contact.id)
-    
-    return NextResponse.json({ ...contact, deals: contactDeals })
+    // Remove avatar from customer data
+    const { avatar, ...customerWithoutAvatar } = customer
+
+    // Check if user has both required scopes
+    const hasDealsRead = context.scopes.includes("deals:read")
+
+    if (hasDealsRead) {
+      // Get associated deals with their activities
+      const customerDeals = deals
+        .filter(d => d.customerId === customer.id)
+        .map(deal => {
+          const dealActivities = activities
+            .filter(a => a.dealId === deal.id)
+            .map(({ customerId, ...rest }) => rest) // Remove customerId from activities
+          return {
+            ...deal,
+            activities: dealActivities
+          }
+        })
+      
+      return NextResponse.json({
+        ...customerWithoutAvatar,
+        deals: customerDeals
+      })
+    }
+
+    return NextResponse.json(customerWithoutAvatar)
   } catch (error) {
     console.error("Error fetching contact:", error)
     return NextResponse.json({ error: "Failed to fetch contact" }, { status: 500 })
