@@ -5,53 +5,84 @@ import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAx
 const data = [
   {
     name: "Jan",
-    total: 1200,
-    deals: 4,
+    total: 250000,
+    open: 80000,
   },
   {
     name: "Feb",
-    total: 2100,
-    deals: 7,
+    total: 320000,
+    open: 120000,
   },
   {
     name: "Mar",
-    total: 1800,
-    deals: 5,
+    total: 280000,
+    open: 100000,
   },
   {
     name: "Apr",
-    total: 2400,
-    deals: 8,
+    total: 410000,
+    open: 210000,
   },
   {
     name: "May",
-    total: 3200,
-    deals: 12,
+    total: 460000,
+    open: 180000,
   },
   {
     name: "Jun",
-    total: 2900,
-    deals: 9,
+    total: 540000,
+    open: 260000,
   },
 ]
 
 export function Overview() {
   return (
-    <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+    <ResponsiveContainer width="100%" height={400}>
+      <BarChart 
+        data={data}
+        margin={{ top: 20, right: 50, left: 20, bottom: 5 }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+        <XAxis 
+          dataKey="name" 
+          stroke="#888888" 
+          fontSize={12} 
+          tickLine={false} 
+          axisLine={false}
+          padding={{ left: 20, right: 20 }}
+        />
         <YAxis
           stroke="#888888"
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => `$${value.toLocaleString()}`}
+          width={80}
         />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="total" name="Revenue" fill="#adfa1d" radius={[4, 4, 0, 0]} />
-        <Bar dataKey="deals" name="Deals Closed" fill="#0ea5e9" radius={[4, 4, 0, 0]} />
+        <Tooltip 
+          formatter={(value: number, name: string) => [
+            value.toLocaleString(),
+            name === 'total' ? 'Revenue' : 'Open Opportunities'
+          ]}
+        />
+        <Legend 
+          verticalAlign="top" 
+          height={36}
+        />
+        <Bar 
+          dataKey="total" 
+          name="Revenue" 
+          fill="#b287d5" 
+          radius={[4, 4, 0, 0]} 
+          maxBarSize={40}
+        />
+        <Bar 
+          dataKey="open" 
+          name="Open Opportunities" 
+          fill="#619972" 
+          radius={[4, 4, 0, 0]} 
+          maxBarSize={40}
+        />
       </BarChart>
     </ResponsiveContainer>
   )
