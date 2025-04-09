@@ -40,7 +40,7 @@ export default function Home() {
                   <CardContent className="grid gap-4">
                     <div className="grid grid-cols-2 gap-4">
                       <Link 
-                        href="https://www.descope.com" 
+                        href="https://www.postman.com/descope-devrel/agentic-auth-hub/collection/sk20i9u/10x-crm?action=share" 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
@@ -53,14 +53,14 @@ export default function Home() {
                         </Card>
                       </Link>
                       <Link 
-                        href="https://www.descope.com" 
+                        href="https://docs.descope.com/inbound-apps" 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
                         <Card className="hover:bg-accent transition-colors">
                           <CardContent className="p-4 flex flex-col items-center">
                             <BookOpen className="h-8 w-8 text-primary mb-2" />
-                            <p className="text-sm font-medium">Inbound App documentation</p>
+                            <p className="text-sm font-medium">Inbound Apps documentation</p>
                             <p className="text-2xl font-bold">Descope Docs Site</p>
                           </CardContent>
                         </Card>
