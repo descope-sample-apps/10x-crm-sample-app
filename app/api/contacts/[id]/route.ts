@@ -17,7 +17,7 @@ async function handler(request: NextRequest, context: OAuthContext) {
   }
 
   try {
-    let customer;
+    let contact;
 
     // Check if the identifier is an email
     if (identifier.includes("@")) {
@@ -65,8 +65,14 @@ async function handler(request: NextRequest, context: OAuthContext) {
       { error: "Failed to fetch contact" },
       { status: 500 }
     );
+    console.error("Error fetching contact:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch contact" },
+      { status: 500 }
+    );
   }
 }
 
 // Only export GET endpoint with contacts.read scope
+export const GET = withOAuth(handler, ["contacts:read"]);
 export const GET = withOAuth(handler, ["contacts:read"]);
