@@ -17,7 +17,7 @@ async function handler(request: NextRequest, context: OAuthContext) {
   }
 
   try {
-    let contact;
+    let customer;
 
     // Check if the identifier is an email
     if (identifier.includes("@")) {
@@ -60,11 +60,6 @@ async function handler(request: NextRequest, context: OAuthContext) {
 
     return NextResponse.json(customerWithoutAvatar);
   } catch (error) {
-    console.error("Error fetching contact:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch contact" },
-      { status: 500 }
-    );
     console.error("Error fetching contact:", error);
     return NextResponse.json(
       { error: "Failed to fetch contact" },
