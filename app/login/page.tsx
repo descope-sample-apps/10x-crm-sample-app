@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Descope } from "@descope/nextjs-sdk";
 import { useDescope, useSession, useUser } from "@descope/nextjs-sdk/client";
@@ -18,20 +18,18 @@ import {
 export default function LoginPage() {
   const { isAuthenticated, isSessionLoading } = useSession();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isDescopeReady, setIsDescopeReady] = useState(false);
-  const redirectPath = searchParams.get("redirect") || "/dashboard";
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push(redirectPath);
+      router.push("/dashboard");
     }
-  }, [isAuthenticated, router, redirectPath]);
+  }, [isAuthenticated, router]);
 
   const onSuccess = () => {
     setIsLoading(true);
-    router.push(redirectPath);
+    router.push("/dashboard");
   };
 
   const onError = (error: any) => {
