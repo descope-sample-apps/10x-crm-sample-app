@@ -75,4 +75,3 @@ async function handler(request: NextRequest, context: OAuthContext) {
 
 // Only export GET endpoint with contacts.read scope
 export const GET = withOAuth(handler, ["contacts:read"]);
-export const GET = withOAuth(handler, ["contacts:read"]);
