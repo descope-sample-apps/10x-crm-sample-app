@@ -1,14 +1,19 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware"
-import { customers, deals, activities } from "@/lib/dummy-data"
+import { type NextRequest, NextResponse } from "next/server";
+import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware";
+import { customers, deals, activities } from "@/lib/dummy-data";
 
 // Get a single contact by ID or email
 async function handler(request: NextRequest, context: OAuthContext) {
-  const identifier = request.url.split("/").pop()!
+  const url = new URL(request.url);
+  const rawIdentifier = url.pathname.split("/").pop() || "";
+  const identifier = decodeURIComponent(rawIdentifier);
 
   // Check if the identifier is empty
   if (!identifier) {
-    return NextResponse.json({ error: "Contact ID is not specified" }, { status: 400 })
+    return NextResponse.json(
+      { error: "Contact ID is not specified" },
+      { status: 400 }
+    );
   }
 
   try {
@@ -16,48 +21,52 @@ async function handler(request: NextRequest, context: OAuthContext) {
 
     // Check if the identifier is an email
     if (identifier.includes("@")) {
-      customer = customers.find(c => c.email.toLowerCase() === identifier.toLowerCase())
+      customer = customers.find(
+        (c) => c.email.toLowerCase() === identifier.toLowerCase()
+      );
     } else {
-      customer = customers.find(c => c.id === identifier)
+      customer = customers.find((c) => c.id === identifier);
     }
 
     if (!customer) {
-      return NextResponse.json({ error: "Contact not found" }, { status: 404 })
+      return NextResponse.json({ error: "Contact not found" }, { status: 404 });
     }
 
     // Remove avatar from customer data
-    const { avatar, ...customerWithoutAvatar } = customer
+    const { avatar, ...customerWithoutAvatar } = customer;
 
     // Check if user has both required scopes
-    const hasDealsRead = context.scopes.includes("deals:read")
+    const hasDealsRead = context.scopes.includes("deals:read");
 
     if (hasDealsRead) {
       // Get associated deals with their activities
       const customerDeals = deals
-        .filter(d => d.customerId === customer.id)
-        .map(deal => {
+        .filter((d) => d.customerId === customer.id)
+        .map((deal) => {
           const dealActivities = activities
-            .filter(a => a.dealId === deal.id)
-            .map(({ customerId, ...rest }) => rest) // Remove customerId from activities
+            .filter((a) => a.dealId === deal.id)
+            .map(({ customerId, ...rest }) => rest); // Remove customerId from activities
           return {
             ...deal,
-            activities: dealActivities
-          }
-        })
-      
+            activities: dealActivities,
+          };
+        });
+
       return NextResponse.json({
         ...customerWithoutAvatar,
-        deals: customerDeals
-      })
+        deals: customerDeals,
+      });
     }
 
-    return NextResponse.json(customerWithoutAvatar)
+    return NextResponse.json(customerWithoutAvatar);
   } catch (error) {
-    console.error("Error fetching contact:", error)
-    return NextResponse.json({ error: "Failed to fetch contact" }, { status: 500 })
+    console.error("Error fetching contact:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch contact" },
+      { status: 500 }
+    );
   }
 }
 
 // Only export GET endpoint with contacts.read scope
-export const GET = withOAuth(handler, ["contacts:read"])
-
+export const GET = withOAuth(handler, ["contacts:read"]);

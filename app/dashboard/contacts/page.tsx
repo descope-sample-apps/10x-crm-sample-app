@@ -1,41 +1,107 @@
-"use client"
+"use client";
 
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { DashboardHeader } from "@/components/dashboard-header"
-import { DashboardShell } from "@/components/dashboard-shell"
-import { Search } from "lucide-react"
-import { customers } from "@/lib/dummy-data"
-import Link from "next/link"
-import { formatCurrency, formatDate, capitalizeFirst } from "@/lib/utils"
-import { useState } from "react"
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { DashboardHeader } from "@/components/dashboard-header";
+import { DashboardShell } from "@/components/dashboard-shell";
+import { Search } from "lucide-react";
+import Link from "next/link";
+import { formatDate, capitalizeFirst } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getSessionToken } from "@descope/nextjs-sdk/client";
+
+// Define the contact interface to match the dummy data structure
+interface Contact {
+  id: string;
+  name: string;
+  email: string;
+  company: string;
+  status: string;
+  lastContact: string;
+  phone?: string;
+  address?: string;
+  notes?: string;
+  created_at?: string;
+  avatar?: string;
+}
+
+interface ContactsResponse {
+  contacts: Contact[];
+}
 
 export default function ContactsPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  
-  // Filter customers based on search query
-  const filteredCustomers = customers.filter(customer => {
-    if (!searchQuery.trim()) return true;
-    
-    const query = searchQuery.toLowerCase();
-    return (
-      customer.name.toLowerCase().includes(query) ||
-      customer.email.toLowerCase().includes(query) ||
-      customer.company.toLowerCase().includes(query)
-    );
-  })
+  const [searchQuery, setSearchQuery] = useState("");
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadContacts() {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        // Get the session token from the client side
+        const token = getSessionToken();
+
+        if (!token) {
+          throw new Error("No authentication token available");
+        }
+
+        // Make the API request with the token
+        const response = await fetch(
+          `/api/contacts/search${
+            searchQuery ? `?query=${encodeURIComponent(searchQuery)}` : ""
+          }`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch contacts: ${response.statusText}`);
+        }
+
+        const data = (await response.json()) as ContactsResponse;
+        setContacts(data.contacts || []);
+      } catch (err) {
+        console.error("Failed to load contacts:", err);
+        setError("Failed to load contacts. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    // Debounce the search to avoid too many API calls
+    const timeoutId = setTimeout(loadContacts, 300);
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery]);
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Contacts" text="Manage your customer contacts." />
+      <DashboardHeader
+        heading="Contacts"
+        text="Manage your customer contacts."
+      />
       <div className="space-y-4">
         <div className="flex items-center gap-2">
           <div className="relative flex-1">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input 
-              type="search" 
-              placeholder="Search contacts..." 
-              className="w-full pl-8" 
+            <Input
+              type="search"
+              placeholder="Search contacts..."
+              className="w-full pl-8"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -54,35 +120,75 @@ export default function ContactsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredCustomers.length > 0 ? (
-                filteredCustomers.map((customer) => (
-                  <TableRow key={customer.id}>
+              {isLoading ? (
+                // Loading skeleton rows
+                Array.from({ length: 5 }).map((_, i) => (
+                  <TableRow key={i}>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[150px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[200px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[150px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[100px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[100px]" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-[80px]" />
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : error ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="text-center py-8 text-red-500"
+                  >
+                    {error}
+                  </TableCell>
+                </TableRow>
+              ) : contacts.length > 0 ? (
+                contacts.map((contact) => (
+                  <TableRow key={contact.id}>
                     <TableCell className="font-medium">
-                      <Link href={`/dashboard/contacts/${customer.id}`} className="hover:underline">
-                        {customer.name}
+                      <Link
+                        href={`/dashboard/contacts/${contact.id}`}
+                        className="hover:underline"
+                      >
+                        {contact.name}
                       </Link>
                     </TableCell>
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>{customer.company}</TableCell>
+                    <TableCell>{contact.email}</TableCell>
+                    <TableCell>{contact.company}</TableCell>
                     <TableCell>
                       <div
                         className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                          customer.status === "active"
+                          contact.status === "active"
                             ? "bg-green-100 text-green-800"
-                            : customer.status === "inactive"
-                              ? "bg-yellow-100 text-yellow-800"
-                              : "bg-red-100 text-red-800"
+                            : contact.status === "inactive"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-red-100 text-red-800"
                         }`}
                       >
-                        {capitalizeFirst(customer.status)}
+                        {capitalizeFirst(contact.status)}
                       </div>
                     </TableCell>
-                    <TableCell>{formatDate(customer.lastContact)}</TableCell>
+                    <TableCell>{formatDate(contact.lastContact)}</TableCell>
+                    <TableCell className="text-right">-</TableCell>
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
+                  <TableCell
+                    colSpan={6}
+                    className="text-center py-8 text-muted-foreground"
+                  >
                     No contacts found matching "{searchQuery}"
                   </TableCell>
                 </TableRow>
@@ -92,6 +198,5 @@ export default function ContactsPage() {
         </div>
       </div>
     </DashboardShell>
-  )
+  );
 }
-
