@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, FileCode, BookOpen, Plug, Database } from "lucide-react"
+import { ArrowRight, FileCode, BookOpen, Plug, Database, Github } from "lucide-react"
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
                   Descope Inbound Apps Starter App
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Turn your app into an OAuth identity provider while leaving the heavy-lifting of authentication, scopes and permissions, and token management to us. Explore how it works!
+                  This is a sample application to showcase how you can turn your app into an OAuth identity provider while leaving the heavy-lifting of authentication, scopes and permissions, and token management to us. Explore how it works!
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -25,8 +25,8 @@ export default function Home() {
                         target="_blank" 
                         rel="noopener noreferrer"
                       >                    <Button size="lg">
-                      Get Started
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      Github Repo
+                      <Github className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                 </div>
@@ -47,8 +47,8 @@ export default function Home() {
                         <Card className="hover:bg-accent transition-colors">
                           <CardContent className="p-4 flex flex-col items-center">
                             <FileCode className="h-8 w-8 text-primary mb-2" />
-                            <p className="text-sm font-medium">Test your APIs</p>
-                            <p className="text-2xl font-bold">Postman Collection</p>
+                            <p className="text-sm font-medium">Postman Collection with Auth</p>
+                            <p className="text-2xl font-bold">Test the APIs</p>
                           </CardContent>
                         </Card>
                       </Link>
@@ -73,7 +73,7 @@ export default function Home() {
                         <Card className="hover:bg-accent transition-colors">
                           <CardContent className="p-4 flex flex-col items-center">
                             <Plug className="h-8 w-8 text-primary mb-2" />
-                            <p className="text-sm font-medium">Connect to your Inbound App</p>
+                            <p className="text-sm font-medium">AI Agent connecting to 10x-CRM</p>
                             <p className="text-2xl font-bold">Connected Agent</p>
                           </CardContent>
                         </Card>
