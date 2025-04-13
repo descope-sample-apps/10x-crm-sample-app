@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { LayoutDashboard, Users, DollarSign, BarChart3, Calendar, Settings, LogOut, X } from "lucide-react"
 import { useDescope, useSession, useUser } from '@descope/nextjs-sdk/client';
 import { useState } from 'react';
+import { useTheme } from "next-themes"
 
 const navItems = [
   {
@@ -52,6 +53,7 @@ export function DashboardNav({ isSidebarOpen, setIsSidebarOpen }: DashboardNavPr
   const pathname = usePathname()
   const sdk = useDescope();
   const router = useRouter();
+  const { theme } = useTheme()
 
   const handleLogout = useCallback(async () => {
 		await sdk.logout();
@@ -62,7 +64,11 @@ export function DashboardNav({ isSidebarOpen, setIsSidebarOpen }: DashboardNavPr
     <div className="flex h-full flex-col border-r bg-muted/40">
       <div className="flex h-14 items-center justify-between border-b px-4 lg:h-[60px] lg:px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold">
-          <img src="/10xLightMode_CRM.svg" alt="10x-CRM Logo" className="h-28 w-28" />
+          <img 
+            src={theme === "dark" ? "/10x_CRM-logo.svg" : "/10xLightMode_CRM.svg"} 
+            alt="10x-CRM Logo" 
+            className="h-28 w-28" 
+          />
         </Link>
         <Button
           variant="ghost"

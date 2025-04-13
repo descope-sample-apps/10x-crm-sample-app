@@ -14,14 +14,14 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#FF0000"]
 
 export function DealsChart() {
   return (
-    <ResponsiveContainer width="100%" height={350}>
-      <PieChart margin={{ top: 20, right: 30, bottom: 50, left: 30 }}>
+    <ResponsiveContainer width="100%" height={300}>
+      <PieChart>
         <Pie
           data={data}
           cx="50%"
-          cy="45%"
+          cy="50%"
           labelLine={false}
-          outerRadius={70}
+          outerRadius={80}
           fill="#8884d8"
           dataKey="value"
           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
@@ -31,15 +31,8 @@ export function DealsChart() {
           ))}
         </Pie>
         <Tooltip formatter={(value) => [`${value} deals`, null]} />
-        <Legend 
-          verticalAlign="bottom" 
-          height={50}
-          layout="horizontal"
-          align="center"
-          wrapperStyle={{ paddingTop: '20px' }}
-        />
+        <Legend />
       </PieChart>
     </ResponsiveContainer>
   )
 }
-

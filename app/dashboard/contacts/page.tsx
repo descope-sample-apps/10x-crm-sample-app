@@ -116,7 +116,6 @@ export default function ContactsPage() {
                 <TableHead>Company</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Last Contact</TableHead>
-                <TableHead className="text-right">Value</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -139,15 +138,12 @@ export default function ContactsPage() {
                     <TableCell>
                       <Skeleton className="h-4 w-[100px]" />
                     </TableCell>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[80px]" />
-                    </TableCell>
                   </TableRow>
                 ))
               ) : error ? (
                 <TableRow>
                   <TableCell
-                    colSpan={6}
+                    colSpan={5}
                     className="text-center py-8 text-red-500"
                   >
                     {error}
@@ -180,13 +176,12 @@ export default function ContactsPage() {
                       </div>
                     </TableCell>
                     <TableCell>{formatDate(contact.lastContact)}</TableCell>
-                    <TableCell className="text-right">-</TableCell>
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
                   <TableCell
-                    colSpan={6}
+                    colSpan={5}
                     className="text-center py-8 text-muted-foreground"
                   >
                     No contacts found matching "{searchQuery}"
