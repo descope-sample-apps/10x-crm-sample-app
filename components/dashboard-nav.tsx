@@ -6,8 +6,9 @@ import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { useCallback } from 'react';
 import { Button } from "@/components/ui/button"
-import { LayoutDashboard, Users, DollarSign, BarChart3, Calendar, Settings, LogOut } from "lucide-react"
+import { LayoutDashboard, Users, DollarSign, BarChart3, Calendar, Settings, LogOut, X } from "lucide-react"
 import { useDescope, useSession, useUser } from '@descope/nextjs-sdk/client';
+import { useState } from 'react';
 
 const navItems = [
   {
@@ -42,7 +43,12 @@ const navItems = [
   },
 ]
 
-export function DashboardNav() {
+interface DashboardNavProps {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (value: boolean) => void;
+}
+
+export function DashboardNav({ isSidebarOpen, setIsSidebarOpen }: DashboardNavProps) {
   const pathname = usePathname()
   const sdk = useDescope();
   const router = useRouter();
@@ -53,15 +59,22 @@ export function DashboardNav() {
 	}, [sdk, router]);
 
   return (
-    <div className="flex flex-col h-full border-r bg-muted/40">
-      <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+    <div className="flex h-full flex-col border-r bg-muted/40">
+      <div className="flex h-14 items-center justify-between border-b px-4 lg:h-[60px] lg:px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold">
-          <BarChart3 className="h-6 w-6" />
-          <span>CRM App</span>
+          <img src="/10xLightMode_CRM.svg" alt="10x-CRM Logo" className="h-28 w-28" />
         </Link>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        >
+          <X className="h-5 w-5" />
+        </Button>
       </div>
-      <div className="flex-1 overflow-auto py-2">
-        <nav className="grid items-start px-2 text-sm font-medium">
+      <div className="flex-1 overflow-y-auto py-2">
+        <nav className="grid items-start gap-1 px-2 text-sm font-medium">
           {navItems.map((item, index) => {
             const Icon = item.icon
             return (
@@ -69,9 +82,10 @@ export function DashboardNav() {
                 key={index}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary",
                   pathname === item.href && "bg-muted text-primary",
                 )}
+                onClick={() => setIsSidebarOpen(false)}
               >
                 <Icon className="h-4 w-4" />
                 <span>{item.title}</span>
@@ -80,7 +94,7 @@ export function DashboardNav() {
           })}
         </nav>
       </div>
-      <div className="mt-auto p-4">
+      <div className="mt-auto border-t p-4">
         <Button variant="outline" className="w-full justify-start" onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />
           Log out
