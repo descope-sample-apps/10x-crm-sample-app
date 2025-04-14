@@ -56,6 +56,32 @@ export const customers: Customer[] = [
     notes: "Director of IT, evaluating cloud solutions",
     created_at: "2023-12-05T11:00:00Z",
     avatar: getAvatarUrl("Michael Chen")
+  },
+  {
+    id: "c4",
+    name: "Sarah Johnson",
+    email: "sarah.j@innovate.com",
+    company: "Innovate Tech",
+    status: "active",
+    lastContact: "2024-01-18",
+    phone: "+1 (555) 456-7890",
+    address: "321 Tech Blvd, San Jose, CA 95112",
+    notes: "CEO, interested in AI solutions",
+    created_at: "2023-12-20T14:00:00Z",
+    avatar: getAvatarUrl("Sarah Johnson")
+  },
+  {
+    id: "c5",
+    name: "David Wilson",
+    email: "david.w@enterprise.com",
+    company: "Enterprise Systems",
+    status: "active",
+    lastContact: "2024-01-15",
+    phone: "+1 (555) 567-8901",
+    address: "555 Enterprise Way, Palo Alto, CA 94301",
+    notes: "CIO, looking for enterprise-wide solutions",
+    created_at: "2023-12-25T16:00:00Z",
+    avatar: getAvatarUrl("David Wilson")
   }
 ]
 
@@ -85,6 +111,14 @@ export const dealOwners: DealOwner[] = [
     position: "Account Manager",
     avatar: getAvatarUrl("Sam Wilson"),
     created_at: "2023-01-05T09:00:00Z"
+  },
+  {
+    id: "o3",
+    name: "Sarah Martinez",
+    email: "sarah.martinez@company.com",
+    position: "Senior Account Executive",
+    avatar: getAvatarUrl("Sarah Martinez"),
+    created_at: "2023-01-10T08:00:00Z"
   }
 ]
 
@@ -133,11 +167,35 @@ export const deals: Deal[] = [
     value: 80000,
     stage: "discovery",
     customerId: "c3",
-    ownerId: "o1",
+    ownerId: "o3",
     expectedCloseDate: "2024-05-01",
     probability: 40,
     created_at: "2024-01-10T00:00:00Z",
     notes: "Hardware refresh and software upgrade project"
+  },
+  {
+    id: "4",
+    name: "AI Implementation Project",
+    value: 350000,
+    stage: "proposal",
+    customerId: "c4",
+    ownerId: "o2",
+    expectedCloseDate: "2024-06-15",
+    probability: 70,
+    created_at: "2024-01-05T00:00:00Z",
+    notes: "Enterprise AI solution implementation"
+  },
+  {
+    id: "5",
+    name: "Digital Transformation Initiative",
+    value: 500000,
+    stage: "discovery",
+    customerId: "c5",
+    ownerId: "o1",
+    expectedCloseDate: "2024-07-01",
+    probability: 30,
+    created_at: "2024-01-08T00:00:00Z",
+    notes: "Comprehensive digital transformation program"
   }
 ]
 
@@ -268,6 +326,18 @@ export const tasks: Task[] = [
   },
   {
     id: "t2",
+    title: "Schedule Technical Demo",
+    description: "Arrange technical demonstration for Acme Inc's engineering team",
+    dealId: "1",
+    dealOwnerId: "o1",
+    dueDate: "2024-02-15",
+    priority: "medium",
+    status: "todo",
+    assignee: "Sales Team",
+    created_at: "2024-01-22T10:00:00Z"
+  },
+  {
+    id: "t3",
     title: "Security compliance documentation",
     description: "Prepare security compliance documentation for Cloud Migration Project",
     dealId: "2",
@@ -278,7 +348,19 @@ export const tasks: Task[] = [
     created_at: "2024-01-25T10:00:00Z"
   },
   {
-    id: "t3",
+    id: "t4",
+    title: "Migration Planning Workshop",
+    description: "Conduct migration planning workshop with Globex Corp's IT team",
+    dealId: "2",
+    dealOwnerId: "o2",
+    dueDate: "2024-02-20",
+    priority: "high",
+    status: "in-progress",
+    assignee: "Technical Team",
+    created_at: "2024-01-28T11:00:00Z"
+  },
+  {
+    id: "t5",
     title: "Infrastructure Assessment Report",
     description: "Complete infrastructure assessment report for TechCorp Solutions",
     dealId: "3",
@@ -288,7 +370,66 @@ export const tasks: Task[] = [
     status: "in-progress",
     assignee: "Technical Team",
     created_at: "2024-01-19T11:00:00Z"
+  },
+  {
+    id: "t6",
+    title: "Hardware Requirements Analysis",
+    description: "Analyze and document hardware requirements for the upgrade",
+    dealId: "3",
+    dealOwnerId: "o1",
+    dueDate: "2024-02-28",
+    priority: "medium",
+    status: "todo",
+    assignee: "Technical Team",
+    created_at: "2024-01-30T14:00:00Z"
+  },
+  {
+    id: "t7",
+    title: "AI Solution Architecture Review",
+    description: "Review and finalize AI solution architecture with Innovate Tech",
+    dealId: "4",
+    dealOwnerId: "o2",
+    dueDate: "2024-03-01",
+    priority: "high",
+    status: "todo",
+    assignee: "AI Team",
+    created_at: "2024-01-15T09:00:00Z"
+  },
+  {
+    id: "t8",
+    title: "Data Integration Planning",
+    description: "Plan data integration strategy for AI implementation",
+    dealId: "4",
+    dealOwnerId: "o2",
+    dueDate: "2024-03-10",
+    priority: "high",
+    status: "in-progress",
+    assignee: "Data Team",
+    created_at: "2024-01-18T10:00:00Z"
+  },
+  {
+    id: "t9",
+    title: "Digital Strategy Workshop",
+    description: "Conduct digital strategy workshop with Enterprise Systems",
+    dealId: "5",
+    dealOwnerId: "o1",
+    dueDate: "2024-02-10",
+    priority: "high",
+    status: "completed",
+    assignee: "Strategy Team",
+    created_at: "2024-01-10T09:00:00Z"
+  },
+  {
+    id: "t10",
+    title: "Transformation Roadmap Development",
+    description: "Develop detailed transformation roadmap",
+    dealId: "5",
+    dealOwnerId: "o1",
+    dueDate: "2024-02-25",
+    priority: "high",
+    status: "in-progress",
+    assignee: "Strategy Team",
+    created_at: "2024-01-12T11:00:00Z"
   }
 ]
-  
-  
+

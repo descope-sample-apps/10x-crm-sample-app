@@ -6,6 +6,7 @@ import { DashboardNav } from "@/components/dashboard-nav"
 import { Button } from "@/components/ui/button"
 import { PanelLeft } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 
 interface DashboardShellProps {
   children: React.ReactNode
@@ -32,7 +33,7 @@ export function DashboardShell({ children, className }: DashboardShellProps) {
 
       {/* Sidebar */}
       <div className={cn(
-        "fixed inset-y-0 left-0 z-40 w-[280px] transform transition-transform duration-200 ease-in-out md:relative md:translate-x-0",
+        "fixed inset-y-0 left-0 z-40 w-[280px] transform transition-transform duration-50 ease-in-out md:relative md:translate-x-0",
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <DashboardNav isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />

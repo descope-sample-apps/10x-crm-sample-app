@@ -17,6 +17,8 @@ import { formatCurrency, formatDate, capitalizeFirst } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getSessionToken } from "@descope/nextjs-sdk/client";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 // Define interfaces to match the API response structure
 interface Deal {
@@ -75,8 +77,7 @@ export default function DealsPage() {
 
         // Make the API request with the token
         const response = await fetch(
-          `/api/deals${
-            searchQuery ? `?search=${encodeURIComponent(searchQuery)}` : ""
+          `/api/deals${searchQuery ? `?search=${encodeURIComponent(searchQuery)}` : ""
           }`,
           {
             headers: {
@@ -107,8 +108,25 @@ export default function DealsPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Deals" text="Manage your sales pipeline." />
-      <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <DashboardHeader
+          heading="Deals"
+          text="Manage your sales deals."
+        />
+        <TooltipProvider delayDuration={100}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="max-w-[300px] text-sm">
+                This demo grants full scopes and API access. To test access with different scopes, check out our <a href="https://www.postman.com/descope-devrel/agentic-auth-hub/collection/sk20i9u/10x-crm?action=share" className="text-primary underline hover:underline">Postman Collection</a>
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+      <div className="space-y-4 mt-4">
         <div className="flex items-center gap-2">
           <div className="relative flex-1">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -122,97 +140,98 @@ export default function DealsPage() {
           </div>
         </div>
         <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Deal Name</TableHead>
-                <TableHead>Customer</TableHead>
-                <TableHead>Owner</TableHead>
-                <TableHead>Stage</TableHead>
-                <TableHead>Expected Close</TableHead>
-                <TableHead className="text-right">Value</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {isLoading ? (
-                // Loading skeleton rows
-                Array.from({ length: 5 }).map((_, i) => (
-                  <TableRow key={i}>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[150px]" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[150px]" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[100px]" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[100px]" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[100px]" />
-                    </TableCell>
-                    <TableCell>
-                      <Skeleton className="h-4 w-[80px]" />
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Deal Name</TableHead>
+                  <TableHead>Customer</TableHead>
+                  <TableHead>Owner</TableHead>
+                  <TableHead>Stage</TableHead>
+                  <TableHead>Expected Close</TableHead>
+                  <TableHead className="text-right">Value</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {isLoading ? (
+                  // Loading skeleton rows
+                  Array.from({ length: 5 }).map((_, i) => (
+                    <TableRow key={i}>
+                      <TableCell>
+                        <Skeleton className="h-4 w-[150px]" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-[150px]" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-[100px]" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-[100px]" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-[100px]" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-4 w-[80px]" />
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : error ? (
+                  <TableRow>
+                    <TableCell
+                      colSpan={6}
+                      className="text-center py-8 text-red-500"
+                    >
+                      {error}
                     </TableCell>
                   </TableRow>
-                ))
-              ) : error ? (
-                <TableRow>
-                  <TableCell
-                    colSpan={6}
-                    className="text-center py-8 text-red-500"
-                  >
-                    {error}
-                  </TableCell>
-                </TableRow>
-              ) : deals.length > 0 ? (
-                deals.map((deal) => (
-                  <TableRow key={deal.id}>
-                    <TableCell className="font-medium">
-                      <Link
-                        href={`/dashboard/deals/${deal.id}`}
-                        className="hover:underline"
-                      >
-                        {deal.name}
-                      </Link>
-                    </TableCell>
-                    <TableCell>{deal.customer?.name || "Unknown"}</TableCell>
-                    <TableCell>{deal.owner?.name || "Unassigned"}</TableCell>
-                    <TableCell>
-                      <div
-                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                          deal.stage === "qualified"
+                ) : deals.length > 0 ? (
+                  deals.map((deal) => (
+                    <TableRow key={deal.id}>
+                      <TableCell className="font-medium">
+                        <Link
+                          href={`/dashboard/deals/${deal.id}`}
+                          className="hover:underline"
+                        >
+                          {deal.name}
+                        </Link>
+                      </TableCell>
+                      <TableCell>{deal.customer?.name || "Unknown"}</TableCell>
+                      <TableCell>{deal.owner?.name || "Unassigned"}</TableCell>
+                      <TableCell>
+                        <div
+                          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${deal.stage === "qualified"
                             ? "bg-blue-100 text-blue-800"
                             : deal.stage === "proposal"
-                            ? "bg-purple-100 text-purple-800"
-                            : deal.stage === "negotiation"
-                            ? "bg-orange-100 text-orange-800"
-                            : "bg-green-100 text-green-800"
-                        }`}
-                      >
-                        {capitalizeFirst(deal.stage)}
-                      </div>
-                    </TableCell>
-                    <TableCell>{formatDate(deal.expectedCloseDate)}</TableCell>
-                    <TableCell className="text-right">
-                      {formatCurrency(deal.value)}
+                              ? "bg-purple-100 text-purple-800"
+                              : deal.stage === "negotiation"
+                                ? "bg-orange-100 text-orange-800"
+                                : "bg-green-100 text-green-800"
+                            }`}
+                        >
+                          {capitalizeFirst(deal.stage)}
+                        </div>
+                      </TableCell>
+                      <TableCell>{formatDate(deal.expectedCloseDate)}</TableCell>
+                      <TableCell className="text-right">
+                        {formatCurrency(deal.value)}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell
+                      colSpan={6}
+                      className="text-center py-8 text-muted-foreground"
+                    >
+                      No deals found matching "{searchQuery}"
                     </TableCell>
                   </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell
-                    colSpan={6}
-                    className="text-center py-8 text-muted-foreground"
-                  >
-                    No deals found matching "{searchQuery}"
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
+                )}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </div>
     </DashboardShell>

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { withOAuth, type OAuthContext } from "@/lib/oauth-middleware";
-import { deals, customers, dealOwners, activities } from "@/lib/dummy-data";
+import { deals, customers, dealOwners, activities, tasks } from "@/lib/dummy-data";
 
 async function handler(request: NextRequest, context: OAuthContext) {
   try {
@@ -15,13 +15,14 @@ async function handler(request: NextRequest, context: OAuthContext) {
     const from = (page - 1) * limit;
     const to = from + limit;
 
-    // Filter and enrich deals with customer, owner, and activities data
+    // Filter and enrich deals with customer, owner, activities, and tasks data
     let filteredDeals = deals.map((deal) => {
       const customer = customers.find((c) => c.id === deal.customerId);
       const owner = dealOwners.find((o) => o.id === deal.ownerId);
       const dealActivities = activities
         .filter((a) => a.dealId === deal.id)
         .map(({ customerId, ...rest }) => rest); // Remove customerId from activities
+      const dealTasks = tasks.filter((t) => t.dealId === deal.id);
 
       return {
         ...deal,
@@ -42,6 +43,7 @@ async function handler(request: NextRequest, context: OAuthContext) {
             }
           : null,
         activities: dealActivities,
+        tasks: dealTasks,
       };
     });
 

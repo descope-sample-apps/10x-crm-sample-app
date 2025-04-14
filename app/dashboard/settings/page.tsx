@@ -16,26 +16,32 @@ export default function SettingsPage() {
     await sdk.logout();
     router.push("/");
   }, [sdk, router]);
+
   return (
-    
     <DashboardShell>
       <DashboardHeader heading="Settings" text="Manage your account settings and preferences." />
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Account Settings</CardTitle>
-          <CardDescription>Manage your basic account settings and information.</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <UserProfile
-            widgetId="user-profile-widget"
-            onLogout={() => {
-              handleLogout();
-              window.location.href = "/login";
-            }}
-          />
-        </CardContent>
-      </Card>
+      <div className="space-y-4 mt-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Account Settings</CardTitle>
+            <CardDescription>Manage your basic account settings and information.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="overflow-x-auto">
+              <div className="min-w-[280px]">
+                <UserProfile
+                  widgetId="user-profile-widget"
+                  onLogout={() => {
+                    handleLogout();
+                    window.location.href = "/login";
+                  }}
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </DashboardShell>
   )
 }

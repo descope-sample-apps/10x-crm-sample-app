@@ -43,17 +43,17 @@ export function Overview() {
           data={data}
           margin={{ top: 20, right: 20, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
           <XAxis 
             dataKey="name" 
-            stroke="#888888" 
+            className="text-muted-foreground"
             fontSize={12} 
             tickLine={false} 
             axisLine={false}
             padding={{ left: 5, right: 5 }}
           />
           <YAxis
-            stroke="#888888"
+            className="text-muted-foreground"
             fontSize={12}
             tickLine={false}
             axisLine={false}
@@ -63,8 +63,14 @@ export function Overview() {
           <Tooltip 
             formatter={(value: number, name: string) => [
               value.toLocaleString(),
-              name === 'total' ? 'Revenue' : 'Open Opportunities'
+              name === 'total' ? 'Revenue' : 'Opportunities'
             ]}
+            contentStyle={{
+              backgroundColor: 'hsl(var(--background))',
+              borderColor: 'hsl(var(--border))',
+              color: 'hsl(var(--foreground))'
+            }}
+            cursor={{ fill: 'hsl(var(--muted))' }}
           />
           <Legend 
             verticalAlign="top" 
@@ -76,16 +82,18 @@ export function Overview() {
           <Bar 
             dataKey="total" 
             name="Revenue" 
-            fill="#b287d5" 
+            fill="hsl(217, 91%, 60%)" 
             radius={[4, 4, 0, 0]} 
             maxBarSize={30}
+            activeBar={{ fill: "hsl(217, 91%, 70%)" }}
           />
           <Bar 
             dataKey="open" 
-            name="Open Opportunities" 
-            fill="#619972" 
+            name="Opportunities" 
+            fill="hsl(142, 76%, 36%)" 
             radius={[4, 4, 0, 0]} 
             maxBarSize={30}
+            activeBar={{ fill: "hsl(142, 76%, 46%)" }}
           />
         </BarChart>
       </ResponsiveContainer>

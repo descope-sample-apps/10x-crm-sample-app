@@ -244,8 +244,8 @@ export default function ContactPage({ params }: ContactPageProps) {
     <DashboardShell>
       <DashboardHeader heading={contact.name} text={contact.company} />
 
-      <div className="grid gap-4 md:grid-cols-7">
-        <Card className="md:col-span-2">
+      <div className="grid gap-4 md:grid-cols-7 mt-4">
+        <Card className="md:col-span-2 h-fit">
           <CardHeader>
             <CardTitle>Contact Details</CardTitle>
           </CardHeader>
@@ -264,13 +264,12 @@ export default function ContactPage({ params }: ContactPageProps) {
             </div>
             <div className="flex items-center">
               <div
-                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                  contact.status === "active"
+                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${contact.status === "active"
                     ? "bg-green-100 text-green-800"
                     : contact.status === "inactive"
-                    ? "bg-yellow-100 text-yellow-800"
-                    : "bg-red-100 text-red-800"
-                }`}
+                      ? "bg-yellow-100 text-yellow-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
               >
                 {capitalizeFirst(contact.status)}
               </div>
@@ -328,15 +327,14 @@ export default function ContactPage({ params }: ContactPageProps) {
                             </Link>
                             <div className="flex items-center mt-1">
                               <div
-                                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                                  deal.stage === "qualified"
+                                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${deal.stage === "qualified"
                                     ? "bg-blue-100 text-blue-800"
                                     : deal.stage === "proposal"
-                                    ? "bg-purple-100 text-purple-800"
-                                    : deal.stage === "negotiation"
-                                    ? "bg-orange-100 text-orange-800"
-                                    : "bg-green-100 text-green-800"
-                                }`}
+                                      ? "bg-purple-100 text-purple-800"
+                                      : deal.stage === "negotiation"
+                                        ? "bg-orange-100 text-orange-800"
+                                        : "bg-green-100 text-green-800"
+                                  }`}
                               >
                                 {capitalizeFirst(deal.stage)}
                               </div>
@@ -385,15 +383,14 @@ export default function ContactPage({ params }: ContactPageProps) {
                           className="flex items-start border-b pb-4"
                         >
                           <div
-                            className={`mt-0.5 rounded-full p-1 ${
-                              activity.type === "call"
+                            className={`mt-0.5 rounded-full p-1 ${activity.type === "call"
                                 ? "bg-blue-100"
                                 : activity.type === "email"
-                                ? "bg-green-100"
-                                : activity.type === "meeting"
-                                ? "bg-purple-100"
-                                : "bg-orange-100"
-                            }`}
+                                  ? "bg-green-100"
+                                  : activity.type === "meeting"
+                                    ? "bg-purple-100"
+                                    : "bg-orange-100"
+                              }`}
                           >
                             <div className="h-2 w-2 rounded-full bg-current" />
                           </div>
@@ -407,11 +404,10 @@ export default function ContactPage({ params }: ContactPageProps) {
                             <p className="text-sm">{activity.notes}</p>
                             <div className="flex items-center pt-2">
                               <div
-                                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                                  activity.completed
+                                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${activity.completed
                                     ? "bg-green-100 text-green-800"
                                     : "bg-yellow-100 text-yellow-800"
-                                }`}
+                                  }`}
                               >
                                 {activity.completed ? "Completed" : "Pending"}
                               </div>

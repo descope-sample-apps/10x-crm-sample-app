@@ -28,11 +28,6 @@ const navItems = [
     icon: DollarSign,
   },
   {
-    title: "Analytics",
-    href: "/dashboard/analytics",
-    icon: BarChart3,
-  },
-  {
     title: "Calendar",
     href: "/dashboard/calendar",
     icon: Calendar,
