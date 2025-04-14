@@ -2,56 +2,56 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export function RecentSales() {
   return (
-    <div className="space-y-8">
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarFallback>JD</AvatarFallback>
+    <div className="space-y-6">
+      <div className="flex items-center gap-4">
+        <Avatar className="h-9 w-9 shrink-0">
+          <AvatarFallback>AC</AvatarFallback>
         </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">John Doe</p>
-          <p className="text-sm text-muted-foreground">john.doe@example.com</p>
+        <div className="min-w-0 flex-1 space-y-1">
+          <p className="text-sm font-medium leading-none truncate">Acme Corp</p>
+          <p className="text-sm text-muted-foreground truncate">Enterprise Software License</p>
         </div>
-        <div className="ml-auto font-medium">+$1,999.00</div>
+        <div className="ml-auto font-medium whitespace-nowrap">+$45,000.00</div>
       </div>
-      <div className="flex items-center">
-        <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
-          <AvatarFallback>JL</AvatarFallback>
+      <div className="flex items-center gap-4">
+        <Avatar className="h-9 w-9 shrink-0">
+          <AvatarFallback>TC</AvatarFallback>
         </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Jane Lane</p>
-          <p className="text-sm text-muted-foreground">jane.lane@example.com</p>
+        <div className="min-w-0 flex-1 space-y-1">
+          <p className="text-sm font-medium leading-none truncate">TechCorp Solutions</p>
+          <p className="text-sm text-muted-foreground truncate">Cloud Services Package</p>
         </div>
-        <div className="ml-auto font-medium">+$3,500.00</div>
+        <div className="ml-auto font-medium whitespace-nowrap">+$32,500.00</div>
       </div>
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarFallback>RK</AvatarFallback>
+      <div className="flex items-center gap-4">
+        <Avatar className="h-9 w-9 shrink-0">
+          <AvatarFallback>GI</AvatarFallback>
         </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Robert Kim</p>
-          <p className="text-sm text-muted-foreground">robert.kim@example.com</p>
+        <div className="min-w-0 flex-1 space-y-1">
+          <p className="text-sm font-medium leading-none truncate">Global Industries</p>
+          <p className="text-sm text-muted-foreground truncate">Consulting Services</p>
         </div>
-        <div className="ml-auto font-medium">+$2,750.00</div>
+        <div className="ml-auto font-medium whitespace-nowrap">+$28,750.00</div>
       </div>
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarFallback>ST</AvatarFallback>
+      <div className="flex items-center gap-4">
+        <Avatar className="h-9 w-9 shrink-0">
+          <AvatarFallback>DS</AvatarFallback>
         </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Sarah Taylor</p>
-          <p className="text-sm text-muted-foreground">sarah.taylor@example.com</p>
+        <div className="min-w-0 flex-1 space-y-1">
+          <p className="text-sm font-medium leading-none truncate">Data Systems Inc</p>
+          <p className="text-sm text-muted-foreground truncate">Data Analytics Platform</p>
         </div>
-        <div className="ml-auto font-medium">+$1,250.00</div>
+        <div className="ml-auto font-medium whitespace-nowrap">+$52,000.00</div>
       </div>
-      <div className="flex items-center">
-        <Avatar className="h-9 w-9">
-          <AvatarFallback>MC</AvatarFallback>
+      <div className="flex items-center gap-4">
+        <Avatar className="h-9 w-9 shrink-0">
+          <AvatarFallback>FI</AvatarFallback>
         </Avatar>
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Michael Chen</p>
-          <p className="text-sm text-muted-foreground">michael.chen@example.com</p>
+        <div className="min-w-0 flex-1 space-y-1">
+          <p className="text-sm font-medium leading-none truncate">Future Innovations</p>
+          <p className="text-sm text-muted-foreground truncate">AI Implementation</p>
         </div>
-        <div className="ml-auto font-medium">+$4,320.00</div>
+        <div className="ml-auto font-medium whitespace-nowrap">+$68,000.00</div>
       </div>
     </div>
   )

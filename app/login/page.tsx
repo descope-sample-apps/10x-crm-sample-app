@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Descope } from "@descope/nextjs-sdk";
 import { useDescope, useSession, useUser } from "@descope/nextjs-sdk/client";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -51,9 +49,8 @@ export default function LoginPage() {
     return (
       <div className="flex min-h-screen items-center justify-center px-4 py-12">
         <Card
-          className={`w-full max-w-md transition-all duration-300 ${
-            !isDescopeReady ? "opacity-0 scale-95" : "opacity-100 scale-100"
-          }`}
+          className={`w-full max-w-md transition-all duration-300 ${!isDescopeReady ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
         >
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl font-bold">Sign in</CardTitle>
@@ -64,9 +61,8 @@ export default function LoginPage() {
           <CardContent>
             <div className="w-full">
               <div
-                className={`transition-opacity duration-300 ${
-                  !isDescopeReady ? "opacity-0" : "opacity-100"
-                }`}
+                className={`transition-opacity duration-300 ${!isDescopeReady ? "opacity-0" : "opacity-100"
+                  }`}
               >
                 <Descope
                   flowId="sign-up-or-in"

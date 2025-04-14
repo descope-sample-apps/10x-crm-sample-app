@@ -37,54 +37,67 @@ const data = [
 
 export function Overview() {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart 
-        data={data}
-        margin={{ top: 20, right: 50, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis 
-          dataKey="name" 
-          stroke="#888888" 
-          fontSize={12} 
-          tickLine={false} 
-          axisLine={false}
-          padding={{ left: 20, right: 20 }}
-        />
-        <YAxis
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-          tickFormatter={(value) => `$${value.toLocaleString()}`}
-          width={80}
-        />
-        <Tooltip 
-          formatter={(value: number, name: string) => [
-            value.toLocaleString(),
-            name === 'total' ? 'Revenue' : 'Open Opportunities'
-          ]}
-        />
-        <Legend 
-          verticalAlign="top" 
-          height={36}
-        />
-        <Bar 
-          dataKey="total" 
-          name="Revenue" 
-          fill="#b287d5" 
-          radius={[4, 4, 0, 0]} 
-          maxBarSize={40}
-        />
-        <Bar 
-          dataKey="open" 
-          name="Open Opportunities" 
-          fill="#619972" 
-          radius={[4, 4, 0, 0]} 
-          maxBarSize={40}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+    <div className="w-full h-[300px] sm:h-[350px] md:h-[400px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart 
+          data={data}
+          margin={{ top: 20, right: 20, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+          <XAxis 
+            dataKey="name" 
+            className="text-muted-foreground"
+            fontSize={12} 
+            tickLine={false} 
+            axisLine={false}
+            padding={{ left: 5, right: 5 }}
+          />
+          <YAxis
+            className="text-muted-foreground"
+            fontSize={12}
+            tickLine={false}
+            axisLine={false}
+            tickFormatter={(value) => `$${value.toLocaleString()}`}
+            width={50}
+          />
+          <Tooltip 
+            formatter={(value: number, name: string) => [
+              value.toLocaleString(),
+              name === 'total' ? 'Revenue' : 'Opportunities'
+            ]}
+            contentStyle={{
+              backgroundColor: 'hsl(var(--background))',
+              borderColor: 'hsl(var(--border))',
+              color: 'hsl(var(--foreground))'
+            }}
+            cursor={{ fill: 'hsl(var(--muted))' }}
+          />
+          <Legend 
+            verticalAlign="top" 
+            height={36}
+            wrapperStyle={{ paddingTop: '0px' }}
+            layout="horizontal"
+            align="center"
+          />
+          <Bar 
+            dataKey="total" 
+            name="Revenue" 
+            fill="hsl(217, 91%, 60%)" 
+            radius={[4, 4, 0, 0]} 
+            maxBarSize={30}
+            activeBar={{ fill: "hsl(217, 91%, 70%)" }}
+          />
+          <Bar 
+            dataKey="open" 
+            name="Opportunities" 
+            fill="hsl(142, 76%, 36%)" 
+            radius={[4, 4, 0, 0]} 
+            maxBarSize={30}
+            activeBar={{ fill: "hsl(142, 76%, 46%)" }}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   )
 }
 

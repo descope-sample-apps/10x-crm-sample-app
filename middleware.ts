@@ -1,4 +1,4 @@
-import { authMiddleware } from "@descope/nextjs-sdk/server";
+import { authMiddleware } from '@descope/nextjs-sdk/server'
 
 export default authMiddleware({
   // The Descope project ID to use for authentication
@@ -9,9 +9,9 @@ export default authMiddleware({
   redirectUrl: "/login",
 
   // An array of public routes that do not require authentication
-  publicRoutes: ["/", "/login", "/dashboard"],
-});
+  publicRoutes: ["/", "/login", "/api/contacts/*", "/api/contacts", "/api/deals", "/api/deals/*"],
+})
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-};
+}

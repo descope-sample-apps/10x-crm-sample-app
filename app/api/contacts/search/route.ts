@@ -11,6 +11,7 @@ interface ContactSearchResponse {
     company: string;
     status: string;
     lastContact: string;
+    phone: string;
   }>;
   total: number;
   page: number;
@@ -84,6 +85,7 @@ async function handler(request: NextRequest, context: OAuthContext) {
       company: contact.company,
       status: contact.status,
       lastContact: contact.lastContact,
+      phone: contact.phone
     }));
 
     // Prepare response
