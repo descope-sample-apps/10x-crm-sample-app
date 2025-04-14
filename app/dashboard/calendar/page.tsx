@@ -6,7 +6,7 @@ import { DashboardShell } from "@/components/dashboard-shell"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
-import { formatDate } from "@/lib/utils"
+import { formatDate, formatTaskStatus } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import { getSessionToken } from "@descope/nextjs-sdk/client"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -186,7 +186,7 @@ export default function CalendarPage() {
                           <p className="truncate">Due: {formatDate(task.dueDate)}</p>
                           <p className="truncate">Deal: {deal?.name}</p>
                           <p className="truncate">Owner: {deal?.owner?.name}</p>
-                          <p className="truncate">Status: {task.status}</p>
+                          <p className="truncate">Status: {formatTaskStatus(task.status)}</p>
                         </div>
                       </div>
                     </div>

@@ -26,6 +26,10 @@ export function capitalizeFirst(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+export function formatTaskStatus(status: string) {
+  return status.split('-').map(word => capitalizeFirst(word)).join(' ')
+}
+
 // Add a helper function to get avatar URLs
 export function getAvatarUrl(name: string) {
   // Use UI Avatars as a fallback service
