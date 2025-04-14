@@ -28,11 +28,15 @@ export function withOAuth(
   requiredScopes: string[] = []
 ) {
   return async function (req: NextRequest) {
+    // Set content type to JSON for all responses
+    const headers = new Headers();
+    headers.set("Content-Type", "application/json");
+
     const authHeader = req.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json(
-        { error: "Missing or invalid Authorization header" },
-        { status: 401 }
+      return new NextResponse(
+        JSON.stringify({ error: "Missing or invalid Authorization header" }),
+        { status: 401, headers }
       );
     }
 
@@ -49,20 +53,20 @@ export function withOAuth(
 
       // Check required scopes
       if (requiredScopes.some((scope) => !scopes.includes(scope))) {
-        return NextResponse.json(
-          {
+        return new NextResponse(
+          JSON.stringify({
             error: "Insufficient permissions",
             requiredScopes: requiredScopes,
-          },
-          { status: 403 }
+          }),
+          { status: 403, headers }
         );
       }
 
       return handler(req, context);
     } catch (error) {
-      return NextResponse.json(
-        { error: "Invalid or expired token" },
-        { status: 401 }
+      return new NextResponse(
+        JSON.stringify({ error: "Invalid or expired token" }),
+        { status: 401, headers }
       );
     }
   };
