@@ -7,9 +7,9 @@ export const styles = {
     heroContent: "flex flex-col items-center text-center space-y-3 md:space-y-4",
     heroTitle: "text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl max-w-[90%] md:max-w-[800px]",
     heroDescription: "text-base md:text-lg lg:text-xl text-muted-foreground max-w-[90%] md:max-w-[800px]",
-    githubButton: "bg-black hover:bg-black/90 text-white hover:text-white dark:bg-white dark:text-black dark:hover:bg-white/90 dark:hover:text-black",
-    githubButtonContent: "flex items-center gap-2",
-    githubIcon: "relative w-5 h-5",
+    githubButton: "w-full sm:w-auto inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-6 sm:px-8 text-sm font-medium text-white shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus-visible:ring-gray-300 group",
+    githubButtonContent: "flex items-center gap-2 w-full justify-center",
+    githubIcon: "relative h-4 w-4 flex-shrink-0",
 
     // Main Content Section
     mainSection: "w-full py-6 md:py-12 bg-muted/30",
@@ -70,12 +70,12 @@ export const styles = {
     optionalScopeText: "text-[#4e5f5f] dark:text-[#8cafae]",
 
     // CTA Section
-    ctaSection: "w-full py-10 md:py-16 lg:py-20 bg-primary text-primary-foreground",
+    ctaSection: "w-full py-6 md:py-8 bg-primary text-primary-foreground",
     ctaContainer: "container px-4 md:px-6 max-w-6xl mx-auto",
-    ctaContent: "flex flex-col items-center text-center space-y-4 md:space-y-5",
-    ctaTitle: "text-2xl md:text-3xl font-bold max-w-[90%] md:max-w-none",
-    ctaDescription: "text-lg md:text-xl max-w-[90%] md:max-w-[800px] opacity-90",
-    ctaButtons: "flex flex-col sm:flex-row justify-center gap-3 md:gap-4 mt-2 md:mt-4 w-full sm:w-auto",
+    ctaContent: "flex flex-col items-center text-center space-y-3",
+    ctaTitle: "text-2xl font-bold tracking-tighter sm:text-3xl max-w-[90%] md:max-w-none",
+    ctaDescription: "text-lg md:text-lg max-w-[90%] md:max-w-[800px] opacity-90",
+    ctaButtons: "flex flex-col sm:flex-row justify-center gap-3 w-full sm:w-auto",
     ctaButtonPrimary: "w-full sm:w-auto group",
     ctaButtonSecondary: "w-full sm:w-auto bg-transparent border-white text-white hover:bg-white/10",
     ctaArrow: "ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1",

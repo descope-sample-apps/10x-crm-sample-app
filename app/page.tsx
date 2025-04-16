@@ -19,11 +19,12 @@ export default function Home() {
               <p className={styles.heroDescription}>
                 A demonstration of how to turn your application into an OAuth identity provider.
               </p>
-              <div className="mt-2 flex gap-2">
+              <div className={`mt-2 ${styles.ctaButtons}`}>
                 <Link
                   href="https://github.com/descope-sample-apps/10x-crm-sample-app"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
                 >
                   <Button
                     size="lg"
@@ -32,8 +33,8 @@ export default function Home() {
                   >
                     <div className={styles.githubButtonContent}>
                       <div className={styles.githubIcon}>
-                        <Image src="/github-mark-white.svg" alt="GitHub" fill className="dark:hidden" />
-                        <Image src="/github-mark.svg" alt="GitHub" fill className="hidden dark:block" />
+                        <Image src="/github-mark-white.svg" alt="GitHub" fill className="dark:hidden group-hover:hidden" />
+                        <Image src="/github-mark.svg" alt="GitHub" fill className="hidden dark:block group-hover:block" />
                       </div>
                       <span>GitHub Repo</span>
                     </div>
@@ -271,7 +272,7 @@ export default function Home() {
         <section className={styles.ctaSection}>
           <div className={styles.ctaContainer}>
             <div className={styles.ctaContent}>
-              <h2 className={styles.ctaTitle}>Ready to Build Your Own Inbound App?</h2>
+              <h2 className={styles.ctaTitle}>Ready to Integrate Your Own Inbound App?</h2>
               <p className={styles.ctaDescription}>
                 Get started with Descope today and transform your application into a secure OAuth provider.
               </p>
