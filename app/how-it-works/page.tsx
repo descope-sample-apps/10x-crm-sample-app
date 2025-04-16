@@ -59,8 +59,7 @@ export default function InboundAppsPage() {
                         <div className="mb-6">
                             <div className="flex items-start gap-2 mb-2">
                                 <div
-                                    className="flex items-center justify-center w-6 h-6 rounded-full text-white text-sm font-bold mt-1"
-                                    style={{ backgroundColor: "#8cafae" }}
+                                    className="flex items-center justify-center w-6 h-6 rounded-full text-white text-sm font-bold mt-1 bg-[#8cafae] dark:bg-[#4e5f5f]"
                                 >
                                     1
                                 </div>
@@ -98,8 +97,7 @@ export default function InboundAppsPage() {
                         <div className="mb-6">
                             <div className="flex items-start gap-2 mb-2">
                                 <div
-                                    className="flex items-center justify-center w-6 h-6 rounded-full text-white text-sm font-bold mt-1"
-                                    style={{ backgroundColor: "#8cafae" }}
+                                    className="flex items-center justify-center w-6 h-6 rounded-full text-white text-sm font-bold mt-1 bg-[#8cafae] dark:bg-[#4e5f5f]"
                                 >
                                     2
                                 </div>
@@ -136,8 +134,7 @@ export default function InboundAppsPage() {
                         <div className="mb-6">
                             <div className="flex items-start gap-2 mb-2">
                                 <div
-                                    className="flex items-center justify-center w-6 h-6 rounded-full text-white text-sm font-bold mt-1"
-                                    style={{ backgroundColor: "#8cafae" }}
+                                    className="flex items-center justify-center w-6 h-6 rounded-full text-white text-sm font-bold mt-1 bg-[#8cafae] dark:bg-[#4e5f5f]"
                                 >
                                     3
                                 </div>
@@ -153,7 +150,7 @@ export default function InboundAppsPage() {
                                 <CardContent className={styles.cardContent}>
                                     <div className="relative w-full rounded-lg flex items-center justify-center overflow-hidden bg-gray-900">
                                         <Image
-                                            src="/consent_flow.webp"
+                                            src="/consent.webp"
                                             alt="Descope Console showing OAuth consent flow configuration with authentication and authorization steps"
                                             width={1000}
                                             height={400}
@@ -177,7 +174,7 @@ export default function InboundAppsPage() {
                                 </p>
                                 <div className={styles.oauthSection}>
                                     <div className={styles.oauthItem}>
-                                        <CheckCircle2 className={styles.oauthIcon} />
+                                        <CheckCircle2 className={`${styles.oauthIcon} text-[#8cafae] dark:text-[#4e5f5f]`} />
                                         <div className={styles.oauthItemContent}>
                                             <h3 className={styles.oauthItemTitle}>OAuth Middleware for CRM API Protection</h3>
                                             <p className={styles.oauthItemText}>
@@ -220,7 +217,7 @@ export function withOAuth(handler, requiredScopes = []) {
                                     </div>
 
                                     <div className={styles.oauthItem}>
-                                        <CheckCircle2 className={styles.oauthIcon} />
+                                        <CheckCircle2 className={`${styles.oauthIcon} text-[#8cafae] dark:text-[#4e5f5f]`} />
                                         <div className={styles.oauthItemContent}>
                                             <h3 className={styles.oauthItemTitle}>Protected CRM API Routes</h3>
                                             <p className={styles.oauthItemText}>
@@ -245,8 +242,12 @@ export const GET = withOAuth(
                                 </div>
                             </CardContent>
                         </Card>
+                    </div>
+                </section>
 
-                        {/* Call to Action */}
+                {/* Call to Action */}
+                <section className={styles.ctaSection}>
+                    <div className={styles.ctaContainer}>
                         <div className={styles.ctaContent}>
                             <h2 className={styles.ctaTitle}>Ready to Secure Your APIs?</h2>
                             <p className={styles.ctaDescription}>
@@ -254,13 +255,13 @@ export const GET = withOAuth(
                             </p>
                             <div className={styles.ctaButtons}>
                                 <Link href="https://docs.descope.com/inbound-apps" target="_blank" rel="noopener noreferrer">
-                                    <Button size="sm" className={styles.ctaButtonPrimary}>
+                                    <Button size="lg" className={styles.ctaButtonSignUp}>
                                         Read the Documentation
-                                        <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+                                        <ExternalLink className={styles.ctaArrow} />
                                     </Button>
                                 </Link>
                                 <Link href="/">
-                                    <Button size="sm" className={styles.ctaButtonPrimary}>
+                                    <Button size="lg" className={styles.ctaButtonSignUp}>
                                         Explore the 10x CRM Demo
                                         <ArrowRight className={styles.ctaArrow} />
                                     </Button>
@@ -270,6 +271,6 @@ export const GET = withOAuth(
                     </div>
                 </section>
             </main>
-        </div >
+        </div>
     )
 }

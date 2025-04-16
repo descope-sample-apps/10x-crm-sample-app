@@ -28,13 +28,11 @@ export default function Home() {
                 >
                   <Button
                     size="lg"
-                    variant="outline"
-                    className={styles.githubButton}
+                    className={styles.ctaButtonPrimary}
                   >
                     <div className={styles.githubButtonContent}>
                       <div className={styles.githubIcon}>
-                        <Image src="/github-mark-white.svg" alt="GitHub" fill className="dark:hidden group-hover:hidden" />
-                        <Image src="/github-mark.svg" alt="GitHub" fill className="hidden dark:block group-hover:block" />
+                        <Image src="/github-mark-white.svg" alt="GitHub" fill />
                       </div>
                       <span>GitHub Repo</span>
                     </div>
@@ -46,8 +44,7 @@ export default function Home() {
                 >
                   <Button
                     size="lg"
-                    variant="outline"
-                    className={styles.githubButton}
+                    className={styles.ctaButtonPrimary}
                   >
                     <div className={styles.githubButtonContent}>
                       <span>How It Works</span>
@@ -277,8 +274,8 @@ export default function Home() {
                 Get started with Descope today and transform your application into a secure OAuth provider.
               </p>
               <div className={styles.ctaButtons}>
-                <Link href="https://www.descope.com/sign-up" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Button size="lg" variant="secondary" className={styles.ctaButtonPrimary}>
+                <Link href="https://www.descope.com/use-cases/ai?utm_source=inbound-apps-demo&utm_medium=referral&utm_campaign=inbound-apps-demo" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                  <Button size="lg" className={styles.ctaButtonSignUp}>
                     Sign Up for Descope
                     <ArrowRight className={styles.ctaArrow} />
                   </Button>
