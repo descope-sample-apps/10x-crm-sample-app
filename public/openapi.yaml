@@ -64,7 +64,7 @@ components:
           type: string
           format: date-time
         contact:
-          $ref: '#/components/schemas/Contact'
+          $ref: "#/components/schemas/Contact"
 
     PaginatedResponse:
       type: object
@@ -125,42 +125,42 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/PaginatedResponse'
+                  - $ref: "#/components/schemas/PaginatedResponse"
                   - properties:
                       data:
                         type: array
                         items:
-                          $ref: '#/components/schemas/Contact'
-        '401':
+                          $ref: "#/components/schemas/Contact"
+        "401":
           description: Missing or invalid token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '403':
+                $ref: "#/components/schemas/Error"
+        "403":
           description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '404':
+                $ref: "#/components/schemas/Error"
+        "404":
           description: No contacts found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '500':
+                $ref: "#/components/schemas/Error"
+        "500":
           description: Server error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /contacts/{id}:
     get:
@@ -178,42 +178,42 @@ paths:
             type: string
           description: The ID or email of the contact to retrieve.
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Contact'
+                  - $ref: "#/components/schemas/Contact"
                   - properties:
                       deals:
                         type: array
                         items:
-                          $ref: '#/components/schemas/Deal'
-        '401':
+                          $ref: "#/components/schemas/Deal"
+        "401":
           description: Missing or invalid token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '403':
+                $ref: "#/components/schemas/Error"
+        "403":
           description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '404':
+                $ref: "#/components/schemas/Error"
+        "404":
           description: Contact not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '500':
+                $ref: "#/components/schemas/Error"
+        "500":
           description: Server error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /deals:
     get:
@@ -243,42 +243,42 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/PaginatedResponse'
+                  - $ref: "#/components/schemas/PaginatedResponse"
                   - properties:
                       data:
                         type: array
                         items:
-                          $ref: '#/components/schemas/Deal'
-        '401':
+                          $ref: "#/components/schemas/Deal"
+        "401":
           description: Missing or invalid token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '403':
+                $ref: "#/components/schemas/Error"
+        "403":
           description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '404':
+                $ref: "#/components/schemas/Error"
+        "404":
           description: No deals found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '500':
+                $ref: "#/components/schemas/Error"
+        "500":
           description: Server error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 
   /deals/{id}:
     get:
@@ -296,7 +296,7 @@ paths:
             type: string
           description: The ID or email of the customer to retrieve deals for.
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -306,30 +306,30 @@ paths:
                   deals:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Deal'
+                      $ref: "#/components/schemas/Deal"
                   customer:
-                    $ref: '#/components/schemas/Contact'
-        '401':
+                    $ref: "#/components/schemas/Contact"
+        "401":
           description: Missing or invalid token
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '403':
+                $ref: "#/components/schemas/Error"
+        "403":
           description: Forbidden - Missing required scope
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '404':
+                $ref: "#/components/schemas/Error"
+        "404":
           description: Customer not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '500':
+                $ref: "#/components/schemas/Error"
+        "500":
           description: Server error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error' 
+                $ref: "#/components/schemas/Error"
