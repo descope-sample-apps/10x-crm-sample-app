@@ -270,19 +270,6 @@ export const GET = withOAuth(
                     </div>
                 </section>
             </main>
-
-            {/* Footer */}
-            <footer className={styles.footer}>
-                <div className={styles.footerContainer}>
-                    <div className={styles.footerContent}>
-                        <div className="flex items-center gap-2">
-                            <span className={styles.footerText}>
-                                © {new Date().getFullYear()} 10x CRM Demo. Built with Descope Inbound Apps.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div >
     )
 }
