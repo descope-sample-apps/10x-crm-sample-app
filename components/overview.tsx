@@ -82,18 +82,18 @@ export function Overview() {
           <Bar 
             dataKey="total" 
             name="Revenue" 
-            fill="hsl(217, 91%, 60%)" 
+            fill="#ff7654" 
             radius={[4, 4, 0, 0]} 
             maxBarSize={30}
-            activeBar={{ fill: "hsl(217, 91%, 70%)" }}
+            activeBar={{ fill: "#ff7654" }}
           />
           <Bar 
             dataKey="open" 
             name="Opportunities" 
-            fill="hsl(142, 76%, 36%)" 
+            fill="#CB2800" 
             radius={[4, 4, 0, 0]} 
             maxBarSize={30}
-            activeBar={{ fill: "hsl(142, 76%, 46%)" }}
+            activeBar={{ fill: "#CB2800" }}
           />
         </BarChart>
       </ResponsiveContainer>
