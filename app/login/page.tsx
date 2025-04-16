@@ -18,12 +18,25 @@ export default function LoginPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isDescopeReady, setIsDescopeReady] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     if (isAuthenticated) {
       router.push("/dashboard");
     }
   }, [isAuthenticated, router]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    setTheme(mediaQuery.matches ? "dark" : "light");
+
+    const handler = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? "dark" : "light");
+    };
+
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   const onSuccess = () => {
     setIsLoading(true);
@@ -49,7 +62,7 @@ export default function LoginPage() {
     return (
       <div className="flex min-h-screen items-center justify-center px-4 py-12">
         <Card
-          className={`w-full max-w-md transition-all duration-300 ${!isDescopeReady ? "opacity-0 scale-95" : "opacity-100 scale-100"
+          className={`w-full max-w-md transition-all duration-300 dark:bg-[#181a1c] ${!isDescopeReady ? "opacity-0 scale-95" : "opacity-100 scale-100"
             }`}
         >
           <CardHeader className="space-y-1">
@@ -69,7 +82,7 @@ export default function LoginPage() {
                   onSuccess={onSuccess}
                   onError={onError}
                   onReady={onReady}
-                  theme="light"
+                  theme={theme}
                 />
               </div>
             </div>

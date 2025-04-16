@@ -7,9 +7,11 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "CRM App",
-  description: "A Next.js CRM application with Descope authentication",
-  generator: 'v0.dev'
+  title: "CRM App | Descope Inbound Apps",
+  description: "A demonstration of Descope Inbound Apps",
+  icons: {
+    icon: "/10x_CRM-Icon.svg",
+  },
 }
 
 export default function RootLayout({
