@@ -86,6 +86,7 @@ export function Overview() {
             radius={[4, 4, 0, 0]} 
             maxBarSize={30}
             activeBar={{ fill: "#ff7654" }}
+            className="dark:fill-[#ff642e] dark:active:fill-[#ff642e]"
           />
           <Bar 
             dataKey="open" 
@@ -94,6 +95,7 @@ export function Overview() {
             radius={[4, 4, 0, 0]} 
             maxBarSize={30}
             activeBar={{ fill: "#CB2800" }}
+            className="dark:fill-[#ffb8a2] dark:active:fill-[#ffb8a2]"
           />
         </BarChart>
       </ResponsiveContainer>
