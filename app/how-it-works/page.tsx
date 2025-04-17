@@ -179,7 +179,7 @@ export default function InboundAppsPage() {
                                             <h3 className={styles.oauthItemTitle}>OAuth Middleware for CRM API Protection</h3>
                                             <p className={styles.oauthItemText}>
                                                 We implemented a custom OAuth middleware that validates JWT tokens issued by Descope, extracts
-                                                the scopes and tenant information, and ensures that API requests have the necessary permissions.
+                                                the scopes, and ensures that API requests have the necessary permissions.
                                             </p>
                                             <div className={styles.oauthCodeBlock}>
                                                 <pre className={styles.oauthCode}>
