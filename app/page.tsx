@@ -213,6 +213,20 @@ export default function Home() {
                                 </div>
                               </div>
                             </div>
+                            <div className={styles.apiEndpoint}>
+                              <div className={styles.apiEndpointContent}>
+                                <div>
+                                  <div className={styles.apiMethod}>GET /contacts/search</div>
+                                  <div className={styles.apiDescription}>List of contacts with optional filters</div>
+                                </div>
+                                <div className={styles.scopeContainer}>
+                                  <div className={styles.primaryScope}>
+                                    <Lock className={styles.scopeIcon} />
+                                    <span className={styles.scopeText}>contacts:read</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </CardContent>
                       </Card>
