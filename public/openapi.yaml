@@ -333,3 +333,103 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
+  /contacts/search:
+    get:
+      summary: Search contacts
+      description: Search contacts with optional filters and pagination
+      tags:
+        - Contacts
+      security:
+        - OAuth2: [contacts:read]
+      parameters:
+        - name: query
+          in: query
+          description: Search query string to filter by name or email
+          required: false
+          schema:
+            type: string
+        - name: company
+          in: query
+          description: Filter by company name
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Filter by contact status
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        company:
+                          type: string
+                        status:
+                          type: string
+                        lastContact:
+                          type: string
+                        phone:
+                          type: string
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+        '400':
+          description: Bad Request - Invalid pagination parameters
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '401':
+          description: Unauthorized - Invalid or missing token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
