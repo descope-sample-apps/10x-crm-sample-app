@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@descope/nextjs-sdk':
         specifier: latest
-        version: 0.15.8(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@11.0.1)(next@15.4.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+        version: 0.15.70(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@10.2.0)(next@15.4.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
       '@hookform/resolvers':
         specifier: ^3.9.1
         version: 3.10.0(react-hook-form@7.68.0(react@19.2.1))
@@ -97,7 +97,7 @@ importers:
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@supabase/supabase-js':
         specifier: latest
-        version: 2.93.2
+        version: 2.114.0
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.22(postcss@8.5.6)
@@ -120,8 +120,8 @@ importers:
         specifier: 1.4.1
         version: 1.4.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       lucide-react:
-        specifier: ^0.454.0
-        version: 0.454.0(react@19.2.1)
+        specifier: ^0.577.0
+        version: 0.577.0(react@19.2.1)
       next:
         specifier: 15.4.11
         version: 15.4.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -160,7 +160,7 @@ importers:
         version: 0.9.9(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       zod:
         specifier: latest
-        version: 4.3.6
+        version: 4.5.4
     devDependencies:
       '@types/node':
         specifier: ^22
@@ -191,81 +191,78 @@ packages:
     resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
     engines: {node: '>=6.9.0'}
 
-  '@descope/access-key-management-widget@0.5.33':
-    resolution: {integrity: sha512-l2HFACXBMB2qy2DpE+Kzpb+rGxsVgjVUYenpbqxm8VhT3TjIzWadIR0IgEuyTZz4y/iy3jkp1tQC0LWLCO+xug==}
+  '@descope/access-key-management-widget@0.10.1':
+    resolution: {integrity: sha512-5EyFNMcdMGOXIkmfMb5Ohdv+UEBWscZqD6mSo4g0UznTvmSrnrMzaqm4h+GDAk4BoiR9ZaQd3JCTHQke8EuqdA==}
 
-  '@descope/applications-portal-widget@0.5.16':
-    resolution: {integrity: sha512-GD4NzvU6utzJ4njjHRtpOZPVeUeAsXqROgu4ulrgP1KRgBz+A2st2U/NyJjJXXYlE83DgMs+kP3BKI+fuJUcFQ==}
+  '@descope/applications-portal-widget@0.9.1':
+    resolution: {integrity: sha512-3RdByTuGCC/oK3fmYe3DQidCOWLOZ8pCm+6tCdkMtt/9bGhpisCrHbsfgHzbu05FvRLNgo9aSC541+vUgHVF2A==}
 
-  '@descope/audit-management-widget@0.5.33':
-    resolution: {integrity: sha512-dYhcUvlwWnFYlWDMM7c9tsiYYVneOy9kL3y6ktqBWKuI9I1TkcPrcXRxjodMWdu8+ge+dknMFhvfEUpRiL4gtg==}
-
-  '@descope/core-js-sdk@2.52.2':
-    resolution: {integrity: sha512-M+lt02G5gCnZh00CwkMcO8eq1T+LPKmgRf92cmU0lqLvUiMar4heOoNtSGIzvTYsqZg4ezFkNPLATyGIWp6baA==}
+  '@descope/audit-management-widget@0.9.1':
+    resolution: {integrity: sha512-LNpSGWq6DOhEPLB7MV+6J44hFCr5KSKZo0b6jicHRa1qqBeVM1635jQWFunK/cPEvSb7U/dbp1970Pe2hYiK2g==}
 
   '@descope/core-js-sdk@2.53.1':
     resolution: {integrity: sha512-KbrtD5VU4Jcis/kKcATTZJ1XxyKTurm8LLlnpJP5GrSRIN5WOYk7tGtXGA1hokWYDyRZCvgheTWm4KxEdCYNeQ==}
 
-  '@descope/core-js-sdk@2.56.2':
-    resolution: {integrity: sha512-kuPu+scVECMs9MFTV284gZAnYhSLQvGrJCEj2hElr3AFUxQTb2E0PoWuX9nrli8lJ+fRnP1cgKCOCTyN0DlEHA==}
+  '@descope/core-js-sdk@2.70.0':
+    resolution: {integrity: sha512-VH9gO7fj+nJB+bDAEDgDcc5GvkgB2R/9Yvrcgl3H1qM+f/OsHHPWX6DcANZsQGzn//2+zuepfuVYp/aUpMFpdg==}
 
   '@descope/escape-markdown@0.1.6':
     resolution: {integrity: sha512-3ENrye8fyyAp88w8OoKGsEl/kH0GgcrPiDRoOajhCODOJnoJ8P/4/giBEjWZV/FKllW4Z5mSXGACEmlINOZLCA==}
 
-  '@descope/nextjs-sdk@0.15.8':
-    resolution: {integrity: sha512-BBA5HNTrr6vNhnhTjZgiJL6otGekh7MmHzlgjnk+t7eebrB+y/UE9I8NNicukmFlSiEeHSw/GCzwGzYMyCgD7g==}
+  '@descope/nextjs-sdk@0.15.70':
+    resolution: {integrity: sha512-hFyQ0K09ku8lNRuEEuWBcZAXWuevFCQRvmfzJB22WLi6/JVnN8xH8KBzy/FHH+c3sm0CID9396HOl0XdloIJtg==}
     peerDependencies:
       '@types/react': '>=18'
       next: '>=13'
       react: '>=18'
 
-  '@descope/node-sdk@1.7.19':
-    resolution: {integrity: sha512-oZxMFEcfFFngEgXrzXfgjk0m+70ufdXaOStDCYRFCX8zwNw7GfkzUOBf+ZpiT6JMd7lcYZeQ/2abCEQLjL/y9g==}
-    engines: {node: '>= 12.0.0'}
+  '@descope/node-sdk@2.8.0':
+    resolution: {integrity: sha512-+FM75wTRU0ND6EZJJ4f+d0Fi6OiU/+N/PWiQ5bMr1UrL1xOmNxyPWGrN65Cens22dfEb3//uh7Lo4ZBSM67BnA==}
+    engines: {node: '>= 16.0.0'}
 
-  '@descope/outbound-applications-widget@0.2.17':
-    resolution: {integrity: sha512-tUbjFgjawJwE2aY1nfArZMGVe6eBlwRv/LUHwkbOS/+3LJvQRam33TQoenor3aaXpOz3VcN2yA3ImSvGQnUYsA==}
+  '@descope/outbound-applications-widget@0.6.1':
+    resolution: {integrity: sha512-PtWuNP8teL5LRPGlqGHbaE9b1H5bXAiCVnMonztn45ApUsS1BnoqeNMatR/YNgY4zNc3KSNo5xhzTJaOmnuIUA==}
 
-  '@descope/react-sdk@2.25.8':
-    resolution: {integrity: sha512-CVDh2UTALcOAm+gw8qaOgpfQYoAT/WUIrZRT8YhN0OlF/U3wmZD84hjkmS6Q8QaeA9LRclgggFPRj2WXf+mEmQ==}
+  '@descope/react-sdk@3.2.1':
+    resolution: {integrity: sha512-OWdUbcuQLAu1mEkr72b1tm49hQVqY7hm1BYazc7HbBjvEqTfJAF0u1NFUzkMnbHVcu73N1mv0shn/xgvFVC1+Q==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@descope/role-management-widget@0.5.25':
-    resolution: {integrity: sha512-kGsvS/ULPwGrWMOkot/vskSz+tFQ1V4JR7dZoyL8xo/JldDZ3iTzB2DEdaOLLaAgBbuIF5j2qJyiCMaqw2QdsA==}
+  '@descope/role-management-widget@0.10.1':
+    resolution: {integrity: sha512-wUpHUR8iL+BclTr8uNsJU9+wqu1EYAVAH7i0SurM4+8KvpWmcrukKYm/EN5BbTT4KWpIrEftj2cUYg8w/zhceA==}
 
-  '@descope/sdk-component-drivers@0.8.1':
-    resolution: {integrity: sha512-7VBxIWMQuiY9J9xYeuCGNaLjnNG01+t+Sc6D+mg9G1TLsVb+2Kkkj1z+qJ3hsSHOBZWjWiclmku4p+I3GHA5Bw==}
+  '@descope/sdk-component-drivers@0.15.0':
+    resolution: {integrity: sha512-AforBf3EJdpE+RcPRs0jgxzIxDxpThBlhPnII5yHisnAP6EcvG7ejn3ACoCee7z7vj3xwCgHItUc/QNrKyCAEg==}
 
-  '@descope/sdk-helpers@0.5.1':
-    resolution: {integrity: sha512-U+ACByV1TFq84WfkXk0Nvu+4IVJ8j3I6u6aS1MA4fYlN+VNQqZ51igiNsKdL+zJpj1T1jH6e7TOZvy0r+gCv0g==}
+  '@descope/sdk-helpers@0.9.0':
+    resolution: {integrity: sha512-+hjxU4EDfBDSrO/YfxRbFKczbygIFJb7/gf3NfHAnOv0JTqPAxmzQYdXd53S12v1NS80kak/soLibRWfKDiG1Q==}
 
-  '@descope/sdk-mixins@0.15.0':
-    resolution: {integrity: sha512-9eppRaMi6ZquSRqsYwQvPEdnWEkFesylurldmDJoTGW7SlmdOv5wrU7HkwB+C4hjX6DB/1b69bO1X9x/yspjmQ==}
+  '@descope/sdk-mixins@0.26.1':
+    resolution: {integrity: sha512-YW4kQxSffKLu7Yj3AAvYD8wMIND8kfDiITTyrpmlFkr7El4ewLlmyXBBSdlk6dXz4r510CQRAqzTgfe4EYlX8A==}
     peerDependencies:
       '@reduxjs/toolkit': ^2.0.1
       immer: ^10.0.3
       redux: 5.0.1
       redux-thunk: 3.1.0
 
-  '@descope/tenant-profile-widget@0.5.17':
-    resolution: {integrity: sha512-gO1yhF7wOkuF2EW3aCndMsICtFoiNbmSUwXfjOPMA9trOeSGc1oB6Gjmmxt78f0gFHRwf6nt8QEKiIzsjpQ1QA==}
+  '@descope/tenant-profile-widget@0.9.1':
+    resolution: {integrity: sha512-JWaIZfoupcST5X9y5gNZqVMzV0FSHpgKRTG2P2hBxuTBIPyJSUzBrSE4W0vQ/xbbMxeYu+jdaqAf5MOAQNicPA==}
 
-  '@descope/user-management-widget@0.11.5':
-    resolution: {integrity: sha512-+ehOWexlbnzpdkrPwGD1OSXf38DKpVCzPg232to2Id96jjdph84BXZv8DN62leM+0BBTCowDVfQi1qWhM3BjVQ==}
+  '@descope/user-management-widget@0.18.1':
+    resolution: {integrity: sha512-hl5jOjUHSPqMiAbBQ5CYdo9iOlVl0iOmwLOKiQ01nJe5d2RsvUOCuY4dbIlGUt2wZ2VmPvKtd/xu4ToOmWzL1A==}
 
-  '@descope/user-profile-widget@0.8.17':
-    resolution: {integrity: sha512-0Sb3l1cA5g1AGhhf0w4/QCB6+ntG3jxP1/Fi8CS6i8Zhv4rluVpPBtM4i7sEaT5qDtZIRrrd4s9I1rEZdHHGyQ==}
+  '@descope/user-profile-widget@0.18.1':
+    resolution: {integrity: sha512-Hhgm1SgeUagYl1KZAF7VkEe5MuIMdG+os19rfl6fS9hHHs2N26s+ZUs82loO0+y6Q5GsaCP+wX+Ma3cB4kkBZQ==}
 
-  '@descope/web-component@3.54.0':
-    resolution: {integrity: sha512-5ucz2mLMZgOmzI0p62527HDphc5mbriQB06KkpymzcO5eje0thQLjS+F+FAlJ/72xSKdD9MtesQ2uIG88kqTiw==}
+  '@descope/web-component@4.3.1':
+    resolution: {integrity: sha512-0KnjNjLx9uwnDEqTFDzn79RqkywTxjTfy28DpbZdoA+hE47sk7xk+P9RyjN59uOD5FrZE6dgPe4/6oSGjJV8Aw==}
 
   '@descope/web-js-sdk@1.40.2':
     resolution: {integrity: sha512-GaB84lEbxf/ZuowZuqxPEHMGvQU9azci3tbzB6NfuFEA0VjTjXiKTYsNsXBexaSyetg8QF8ty7oibENKTTYPeg==}
 
-  '@descope/web-js-sdk@1.44.0':
-    resolution: {integrity: sha512-66vaC2zSIpvsjytDONf3oW7jIB1xbiQ4C/CqCygWApWC5TheQZopIfFNn129MVHBPJQPzyNLTkCbrcDHYdO2rw==}
+  '@descope/web-js-sdk@1.52.0':
+    resolution: {integrity: sha512-G8VRbJ5/ZPJ2M9Ej8tq/hLY6X3O06U2W7Le7bBveONv2NzOvFfxghEqUxmgtrqdRx3SgNlvh2YmSNNI9LMA36Q==}
 
   '@emnapi/runtime@1.7.1':
     resolution: {integrity: sha512-PVtJr5CmLwYAU9PZDMITZoR5iAOShYREoR45EyyLrbntV50mdePTgUn4AmOw90Ifcj+x2kRjdzr1HP3RrNiHGA==}
@@ -1199,29 +1196,37 @@ packages:
   '@standard-schema/utils@0.3.0':
     resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
-  '@supabase/auth-js@2.93.2':
-    resolution: {integrity: sha512-uifI5vkhvHCQjn+LUPL5QlsuDMP4oVBD5SiliREgYuTJvCkbPLOcAPGrw88q7VUX9S0J0QuJn+37hrcTITisuw==}
-    engines: {node: '>=20.0.0'}
+  '@supabase/auth-js@2.114.0':
+    resolution: {integrity: sha512-7pdAE31YHynM1b2rbrbVtQc4ug5LcUvATe9u3EazlCZMY6jar7Z5JHJlj7/qcO5Z6KAYT26sTr5mvVHePeuC/g==}
+    engines: {node: '>=22.0.0'}
 
-  '@supabase/functions-js@2.93.2':
-    resolution: {integrity: sha512-reSp7yj4KmvAFfmN+N7vYsHXOIZQh9cmRBh+VrZlm7qgIIUdYmzKuD85TvFnWApqcdI2pPnuZGKWE/2B4GXT1A==}
-    engines: {node: '>=20.0.0'}
+  '@supabase/functions-js@2.114.0':
+    resolution: {integrity: sha512-N3hzlq2xr6IYkkgj0tC4j0U3LWVshr5U/DAvmD5Bu8bW1ne2XOwxOx3ps6Y3NbptBAlzDrezmeJevlZR4AqsLA==}
+    engines: {node: '>=22.0.0'}
 
-  '@supabase/postgrest-js@2.93.2':
-    resolution: {integrity: sha512-W2AWDsYwRT217II5yD3jWaX3fJjB7DwyNi2KNi4sphdUI3DKY4fP2XYVDGfeb1clEFL18gw+GBhyQb3BcpNWkw==}
-    engines: {node: '>=20.0.0'}
+  '@supabase/phoenix@0.4.5':
+    resolution: {integrity: sha512-aAn9H9ovVyeApKy11OWOrrOGq8DV68yWeH4ud2lN9fzn4aO8Zb5GLL9m1pUg9nLqIcT+ZDfAcsZe0E/nqdv2lw==}
 
-  '@supabase/realtime-js@2.93.2':
-    resolution: {integrity: sha512-YpAmJn7DLbMeYfQilcf3f0DKoY8O8TRbTF2oRpWFzHXTlEA+YWms8fBqM13Mf7RE72ouSNKDYyf5K2pWRSHvFw==}
-    engines: {node: '>=20.0.0'}
+  '@supabase/postgrest-js@2.114.0':
+    resolution: {integrity: sha512-yKAe5Tc47+LLm6YU1OAHWqwkxidlnl/vHDMHx+VANcUaeMfNzDKrXTUuZ5BKCGM4+1gJWm/U3n4W+2aRn8d8dA==}
+    engines: {node: '>=22.0.0'}
 
-  '@supabase/storage-js@2.93.2':
-    resolution: {integrity: sha512-abRSVClfIQn+SqpdqL7S7b3VeyS8270/o0gqmGFtiidb7Lu0COsIV6Mor/mK9xE99KYWzyd37vwYYwv/jaANhw==}
-    engines: {node: '>=20.0.0'}
+  '@supabase/realtime-js@2.114.0':
+    resolution: {integrity: sha512-gSkuQrM/etAlUnw9YMDA2e+iNMCLezf0IHyOzmetOqy9KPsGe2C3puTd/4xalirnko+p3BEykFVliHaY2yXVrw==}
+    engines: {node: '>=22.0.0'}
 
-  '@supabase/supabase-js@2.93.2':
-    resolution: {integrity: sha512-G3bZZi6rPwXcPtyHLXQTeHKa5ADZ2UW/+hv8YhwZFwngz4TlPnR4+TeO37EwU5+d/reD02qXozOZgz+QHv1Jtg==}
-    engines: {node: '>=20.0.0'}
+  '@supabase/storage-js@2.114.0':
+    resolution: {integrity: sha512-leK7YsDVqIKd9hQRJeK03QRZ8Slg2JExmNIj+BL7dkD3m+ZNREJ7ITQdrc7VhNhh8+Eb/ebm1Ts4AOoY4LFSiA==}
+    engines: {node: '>=22.0.0'}
+
+  '@supabase/supabase-js@2.114.0':
+    resolution: {integrity: sha512-uvmqk2yxVp77c/LjWzJaw1/HId+2a3sck4idbBy3nOTro36l7nVcHdT/XENHj7Fi/IJAvAsJrTSgTEegbYTxvQ==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      '@opentelemetry/api': '>=1.0.0'
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -1256,9 +1261,6 @@ packages:
   '@types/node@22.19.1':
     resolution: {integrity: sha512-LCCV0HdSZZZb34qifBsyWlUmok6W7ouER+oQIGBScS8EsZsQbrtFTUrDX4hOl+CS6p7cnNC4td+qrSVGSCTUfQ==}
 
-  '@types/phoenix@1.6.6':
-    resolution: {integrity: sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==}
-
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
@@ -1266,9 +1268,6 @@ packages:
 
   '@types/react@19.2.7':
     resolution: {integrity: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==}
-
-  '@types/ws@8.18.1':
-    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
   any-promise@1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
@@ -1541,6 +1540,9 @@ packages:
     resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
     engines: {node: '>=14'}
 
+  js-cookie@3.0.8:
+    resolution: {integrity: sha512-yeJd4aNAdYZQjaon2bpD/Gb0B/omw7HQOsynXXcOiWVCacbBcPlgn8S/d1X6blFSaHao7ozqtW7NZW19xpCtIw==}
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -1565,10 +1567,10 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lucide-react@0.454.0:
-    resolution: {integrity: sha512-hw7zMDwykCLnEzgncEEjHeA6+45aeEzRYuKHuyRSOPkhko+J3ySGjGIzu+mmMfDFG1vazHepMaYFYHbTFAZAAQ==}
+  lucide-react@0.577.0:
+    resolution: {integrity: sha512-4LjoFv2eEPwYDPg/CUdBJQSDfPyzXCRrVW1X7jrx/trgxnxkHFjnVZINbzvzxjN70dxychOfg+FTYwBiS3pQ5A==}
     peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -1808,6 +1810,7 @@ packages:
   recharts@2.15.0:
     resolution: {integrity: sha512-cIvMxDfpAmqAmVgc4yb7pgm/O1tmmkl/CjrvXuW+62/+7jj/iF9Ykm+hb/UJt42TREHMyd3gb+pkgoa2MxgDIw==}
     engines: {node: '>=14'}
+    deprecated: 1.x and 2.x branches are no longer active. Bump to Recharts v3 to receive latest features and bugfixes. See https://github.com/recharts/recharts/wiki/3.0-migration-guide
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -1976,20 +1979,8 @@ packages:
   whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
 
-  ws@8.18.3:
-    resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-
-  zod@4.3.6:
-    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
+  zod@4.5.4:
+    resolution: {integrity: sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA==}
 
 snapshots:
 
@@ -1997,12 +1988,12 @@ snapshots:
 
   '@babel/runtime@7.28.4': {}
 
-  '@descope/access-key-management-widget@0.5.33(react@19.2.1)':
+  '@descope/access-key-management-widget@0.10.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2013,12 +2004,12 @@ snapshots:
       - react
       - react-redux
 
-  '@descope/applications-portal-widget@0.5.16(react@19.2.1)':
+  '@descope/applications-portal-widget@0.9.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2029,12 +2020,12 @@ snapshots:
       - react
       - react-redux
 
-  '@descope/audit-management-widget@0.5.33(react@19.2.1)':
+  '@descope/audit-management-widget@0.9.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2044,28 +2035,25 @@ snapshots:
     transitivePeerDependencies:
       - react
       - react-redux
-
-  '@descope/core-js-sdk@2.52.2':
-    dependencies:
-      jwt-decode: 4.0.0
 
   '@descope/core-js-sdk@2.53.1':
     dependencies:
       jwt-decode: 4.0.0
     optional: true
 
-  '@descope/core-js-sdk@2.56.2':
+  '@descope/core-js-sdk@2.70.0':
     dependencies:
       jwt-decode: 4.0.0
+      tslib: 2.8.1
 
   '@descope/escape-markdown@0.1.6': {}
 
-  '@descope/nextjs-sdk@0.15.8(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@11.0.1)(next@15.4.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
+  '@descope/nextjs-sdk@0.15.70(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@10.2.0)(next@15.4.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
     dependencies:
-      '@descope/core-js-sdk': 2.56.2
-      '@descope/node-sdk': 1.7.19
-      '@descope/react-sdk': 2.25.8(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@11.0.1)(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-component': 3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@11.0.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/core-js-sdk': 2.70.0
+      '@descope/node-sdk': 2.8.0
+      '@descope/react-sdk': 3.2.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@10.2.0)(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-component': 4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
       '@types/react': 19.2.7
       next: 15.4.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react: 19.2.1
@@ -2079,22 +2067,22 @@ snapshots:
       - redux
       - redux-thunk
 
-  '@descope/node-sdk@1.7.19':
+  '@descope/node-sdk@2.8.0':
     dependencies:
-      '@descope/core-js-sdk': 2.52.2
+      '@descope/core-js-sdk': 2.70.0
       cross-fetch: 4.1.0
       jose: 5.2.2
       tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
-  '@descope/outbound-applications-widget@0.2.17(react@19.2.1)':
+  '@descope/outbound-applications-widget@0.6.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-component': 3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-component': 4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2105,20 +2093,20 @@ snapshots:
       - react
       - react-redux
 
-  '@descope/react-sdk@2.25.8(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@11.0.1)(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
+  '@descope/react-sdk@3.2.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(@types/react@19.2.7)(immer@10.2.0)(react@19.2.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
     dependencies:
-      '@descope/access-key-management-widget': 0.5.33(react@19.2.1)
-      '@descope/applications-portal-widget': 0.5.16(react@19.2.1)
-      '@descope/audit-management-widget': 0.5.33(react@19.2.1)
-      '@descope/core-js-sdk': 2.56.2
-      '@descope/outbound-applications-widget': 0.2.17(react@19.2.1)
-      '@descope/role-management-widget': 0.5.25(react@19.2.1)
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/tenant-profile-widget': 0.5.17(react@19.2.1)
-      '@descope/user-management-widget': 0.11.5(react@19.2.1)
-      '@descope/user-profile-widget': 0.8.17(react@19.2.1)
-      '@descope/web-component': 3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@11.0.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/access-key-management-widget': 0.10.1(react@19.2.1)
+      '@descope/applications-portal-widget': 0.9.1(react@19.2.1)
+      '@descope/audit-management-widget': 0.9.1(react@19.2.1)
+      '@descope/core-js-sdk': 2.70.0
+      '@descope/outbound-applications-widget': 0.6.1(react@19.2.1)
+      '@descope/role-management-widget': 0.10.1(react@19.2.1)
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/tenant-profile-widget': 0.9.1(react@19.2.1)
+      '@descope/user-management-widget': 0.18.1(react@19.2.1)
+      '@descope/user-profile-widget': 0.18.1(react@19.2.1)
+      '@descope/web-component': 4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@types/react': 19.2.7
       react: 19.2.1
     transitivePeerDependencies:
@@ -2128,12 +2116,12 @@ snapshots:
       - redux
       - redux-thunk
 
-  '@descope/role-management-widget@0.5.25(react@19.2.1)':
+  '@descope/role-management-widget@0.10.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2144,42 +2132,32 @@ snapshots:
       - react
       - react-redux
 
-  '@descope/sdk-component-drivers@0.8.1':
+  '@descope/sdk-component-drivers@0.15.0':
     dependencies:
-      '@descope/sdk-helpers': 0.5.1
+      '@descope/sdk-helpers': 0.9.0
       tslib: 2.8.1
 
-  '@descope/sdk-helpers@0.5.1':
+  '@descope/sdk-helpers@0.9.0':
     dependencies:
       tslib: 2.8.1
 
-  '@descope/sdk-mixins@0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
+  '@descope/sdk-mixins@0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
       redux-thunk: 3.1.0(redux@5.0.1)
       tslib: 2.8.1
 
-  '@descope/sdk-mixins@0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@11.0.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
+  '@descope/tenant-profile-widget@0.9.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@reduxjs/toolkit': 2.11.0(react@19.2.1)
-      immer: 11.0.1
-      redux: 5.0.1
-      redux-thunk: 3.1.0(redux@5.0.1)
-      tslib: 2.8.1
-
-  '@descope/tenant-profile-widget@0.5.17(react@19.2.1)':
-    dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-component': 3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-component': 4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2187,18 +2165,18 @@ snapshots:
       reselect: 5.1.1
       tslib: 2.8.1
     optionalDependencies:
-      '@descope/core-js-sdk': 2.56.2
+      '@descope/core-js-sdk': 2.70.0
     transitivePeerDependencies:
       - react
       - react-redux
 
-  '@descope/user-management-widget@0.11.5(react@19.2.1)':
+  '@descope/user-management-widget@0.18.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-component': 3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-component': 4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       libphonenumber-js: 1.11.17
@@ -2210,13 +2188,13 @@ snapshots:
       - react
       - react-redux
 
-  '@descope/user-profile-widget@0.8.17(react@19.2.1)':
+  '@descope/user-profile-widget@0.18.1(react@19.2.1)':
     dependencies:
-      '@descope/sdk-component-drivers': 0.8.1
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-component': 3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-component-drivers': 0.15.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-component': 4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@reduxjs/toolkit': 2.11.0(react@19.2.1)
       immer: 10.2.0
       redux: 5.0.1
@@ -2224,31 +2202,17 @@ snapshots:
       reselect: 5.1.1
       tslib: 2.8.1
     optionalDependencies:
-      '@descope/core-js-sdk': 2.56.2
+      '@descope/core-js-sdk': 2.70.0
     transitivePeerDependencies:
       - react
       - react-redux
 
-  '@descope/web-component@3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
+  '@descope/web-component@4.3.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
     dependencies:
       '@descope/escape-markdown': 0.1.6
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
-      '@fingerprintjs/fingerprintjs-pro': 3.11.6
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - '@reduxjs/toolkit'
-      - immer
-      - redux
-      - redux-thunk
-
-  '@descope/web-component@3.54.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@11.0.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)':
-    dependencies:
-      '@descope/escape-markdown': 0.1.6
-      '@descope/sdk-helpers': 0.5.1
-      '@descope/sdk-mixins': 0.15.0(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@11.0.1)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
-      '@descope/web-js-sdk': 1.44.0
+      '@descope/sdk-helpers': 0.9.0
+      '@descope/sdk-mixins': 0.26.1(@reduxjs/toolkit@2.11.0(react@19.2.1))(immer@10.2.0)(redux-thunk@3.1.0(redux@5.0.1))(redux@5.0.1)
+      '@descope/web-js-sdk': 1.52.0
       '@fingerprintjs/fingerprintjs-pro': 3.11.6
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -2266,11 +2230,11 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@descope/web-js-sdk@1.44.0':
+  '@descope/web-js-sdk@1.52.0':
     dependencies:
-      '@descope/core-js-sdk': 2.56.2
+      '@descope/core-js-sdk': 2.70.0
       '@fingerprintjs/fingerprintjs-pro': 3.11.6
-      js-cookie: 3.0.5
+      js-cookie: 3.0.8
       jwt-decode: 4.0.0
       tslib: 2.8.1
 
@@ -3163,43 +3127,37 @@ snapshots:
 
   '@standard-schema/utils@0.3.0': {}
 
-  '@supabase/auth-js@2.93.2':
+  '@supabase/auth-js@2.114.0':
     dependencies:
       tslib: 2.8.1
 
-  '@supabase/functions-js@2.93.2':
+  '@supabase/functions-js@2.114.0':
     dependencies:
       tslib: 2.8.1
 
-  '@supabase/postgrest-js@2.93.2':
+  '@supabase/phoenix@0.4.5': {}
+
+  '@supabase/postgrest-js@2.114.0':
     dependencies:
       tslib: 2.8.1
 
-  '@supabase/realtime-js@2.93.2':
+  '@supabase/realtime-js@2.114.0':
     dependencies:
-      '@types/phoenix': 1.6.6
-      '@types/ws': 8.18.1
+      '@supabase/phoenix': 0.4.5
       tslib: 2.8.1
-      ws: 8.18.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
-  '@supabase/storage-js@2.93.2':
+  '@supabase/storage-js@2.114.0':
     dependencies:
       iceberg-js: 0.8.1
       tslib: 2.8.1
 
-  '@supabase/supabase-js@2.93.2':
+  '@supabase/supabase-js@2.114.0':
     dependencies:
-      '@supabase/auth-js': 2.93.2
-      '@supabase/functions-js': 2.93.2
-      '@supabase/postgrest-js': 2.93.2
-      '@supabase/realtime-js': 2.93.2
-      '@supabase/storage-js': 2.93.2
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
+      '@supabase/auth-js': 2.114.0
+      '@supabase/functions-js': 2.114.0
+      '@supabase/postgrest-js': 2.114.0
+      '@supabase/realtime-js': 2.114.0
+      '@supabase/storage-js': 2.114.0
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -3233,8 +3191,6 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/phoenix@1.6.6': {}
-
   '@types/react-dom@19.2.3(@types/react@19.2.7)':
     dependencies:
       '@types/react': 19.2.7
@@ -3242,10 +3198,6 @@ snapshots:
   '@types/react@19.2.7':
     dependencies:
       csstype: 3.2.3
-
-  '@types/ws@8.18.1':
-    dependencies:
-      '@types/node': 22.19.1
 
   any-promise@1.3.0: {}
 
@@ -3484,7 +3436,10 @@ snapshots:
 
   jose@5.2.2: {}
 
-  js-cookie@3.0.5: {}
+  js-cookie@3.0.5:
+    optional: true
+
+  js-cookie@3.0.8: {}
 
   js-tokens@4.0.0: {}
 
@@ -3502,7 +3457,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lucide-react@0.454.0(react@19.2.1):
+  lucide-react@0.577.0(react@19.2.1):
     dependencies:
       react: 19.2.1
 
@@ -3924,6 +3879,4 @@ snapshots:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
 
-  ws@8.18.3: {}
-
-  zod@4.3.6: {}
+  zod@4.5.4: {}
